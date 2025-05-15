@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 *{
+    max-width: 767px;
     margin:0;
+    display: grid;
     padding: 0;
+    grid-template-columns: 1fr;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     scroll-behavior: smooth;
@@ -76,6 +79,15 @@ body{
     justify-content: center;
     font-weight: 900;
     gap:10px;
+}
+@media  scren and (min-width: 768px) and (max-width: 1199px) {
+    .header { grid-template-columns: 1fr 1fr
+    }
+    
+}
+@media scren and(min-width: 1200px) {
+    .header {grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
 }
 .header .socialki a,.header .socialki a:visited{
     color:#000;

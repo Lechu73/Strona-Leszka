@@ -1,105 +1,130 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-*{
-    max-width: 767px;
-    margin:0;
-    display: grid;
+
+/* RESET – bez rzeczy, które psuły layout globalnie */
+* {
+    margin: 0;
     padding: 0;
-    grid-template-columns: 1fr;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     scroll-behavior: smooth;
-    -webkit-scroll-behavior:smooth;
-    
+    -webkit-scroll-behavior: smooth;
 }
-body{
+
+/* Obrazki responsywnie (bezpieczne) */
+img,
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+body {
     background: #fff;
     margin: 0 auto;
 }
-.header{
+
+.header {
     background: #ccc;
     height: 100px;
     display: flex;
     align-items: center;
     position: sticky;
-    top:0;
-    z-index:99999999;
+    top: 0;
+    z-index: 99999999;
 }
-.header .logo1{
-    flex:1;
-    height:100%;
+
+.header .logo1 {
+    flex: 1;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.header .logo1 img{
-    height:70px;
-    width:auto;
+
+.header .logo1 img {
+    height: 70px;
+    width: auto;
 }
-.header .menu{
-    flex:8;
-    height:100%;
+
+.header .menu {
+    flex: 8;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.header .menu ul{
+
+.header .menu ul {
     display: flex;
     list-style-type: none;
     align-items: center;
     justify-content: space-around;
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
 }
-.header .menu ul a{
+
+.header .menu ul a {
     display: flex;
     align-items: center;
     justify-content: center;
-    width:100%;
-    height:100%;
-    color:#000;
+    width: 100%;
+    height: 100%;
+    color: #000;
     text-decoration: none;
     transition: 0.7s;
 }
-.header .menu ul a:hover{
-    background:#c00;
-    color:#fff;
+
+.header .menu ul a:hover {
+    background: #c00;
+    color: #fff;
 }
-.header .menu ul a li{
+
+.header .menu ul a li {
     display: flex;
     align-items: center;
     justify-content: center;
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
 }
-.header .socialki{
-    flex:1;
-    height:100%;
+
+.header .socialki {
+    flex: 1;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 900;
-    gap:10px;
+    gap: 10px;
 }
-@media  scren and (min-width: 768px) and (max-width: 1199px) {
-    .header { grid-template-columns: 1fr 1fr
+
+/* Poprawione 'screen' + spacje w media queries */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    .header {
+        /* Uwaga: to działa w grid, ale header ma flex – zostawiam bez zmian dla kompatybilności */
+        grid-template-columns: 1fr 1fr;
     }
-    
 }
-@media scren and(min-width: 1200px) {
-    .header {grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+@media screen and (min-width: 1200px) {
+    .header {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
 }
-.header .socialki a,.header .socialki a:visited{
-    color:#000;
-    font-size:2rem;
+
+.header .socialki a,
+.header .socialki a:visited {
+    color: #000;
+    font-size: 2rem;
 }
-.header .socialki a:hover i.fa-square-facebook{
-    color:blue;
+
+.header .socialki a:hover i.fa-square-facebook {
+    color: blue;
 }
-.header .socialki a:hover i.fa-square-youtube{
-    color:red;
+
+.header .socialki a:hover i.fa-square-youtube {
+    color: red;
 }
-.baner{
+
+.baner {
     background: url(../img/bg1.jpg);
     background-repeat: no-repeat;
     background-position: center;
@@ -107,54 +132,59 @@ body{
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    
 }
-.baner .kratka{
-    margin-right:5%;
-    width:400px;
-    min-height:300px;
-    background: rgba(0,0,0,0.5);
-    color:#fff;
+
+.baner .kratka {
+    margin-right: 5%;
+    width: 400px;
+    min-height: 300px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
-.baner .kratka h1{
+
+.baner .kratka h1 {
     font-weight: 200;
 }
-.baner .kratka p{
+
+.baner .kratka p {
     text-align: center;
 }
-.baner .kratka a{
+
+.baner .kratka a {
     color: #fff;
     text-decoration: none;
     text-transform: uppercase;
     border: 1px solid #fff;
     padding: 10px 30px;
-    width:100%;
+    width: 100%;
     text-align: center;
     transition: 0.7s;
 }
-.baner .kratka a:hover{
-    background:#fff;
-    color:#000;
+
+.baner .kratka a:hover {
+    background: #fff;
+    color: #000;
 }
+
 .opis {
     background: #cca;
     display: flex;
-    align-items: center; 
+    align-items: center;
     scroll-margin-top: 100px;
-    gap: 20px; 
+    gap: 20px;
     padding: 20px;
 }
 
 .opis .zdjecie {
     flex: 1;
     display: flex;
-    justify-content: center; 
-    align-items: center;     
+    justify-content: center;
+    align-items: center;
 }
 
 .opis .zdjecie img {
@@ -176,19 +206,21 @@ body{
     flex-direction: column;
     justify-content: center;
 }
+
 .paralaxa {
     background: url(../img/bg2.jpg);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;/*powoduje przyklejenie obrazu tła do okna przeglądarki*/
+    background-size: cover;
+    /*powoduje przyklejenie obrazu tła do okna przeglądarki*/
     background-attachment: fixed;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     scroll-margin-top: 100px;
 }
-  
-  .paralaxa .kratka {
+
+.paralaxa .kratka {
     margin-left: 10%;
     width: 400px;
     min-height: 300px;
@@ -199,17 +231,17 @@ body{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-  }
-  
-  .paralaxa .kratka h1 {
+}
+
+.paralaxa .kratka h1 {
     font-weight: 200;
-  }
-  
-  .paralaxa .kratka p {
+}
+
+.paralaxa .kratka p {
     text-align: center;
-  }
-  
-  .paralaxa .kratka a {
+}
+
+.paralaxa .kratka a {
     color: #fff;
     text-decoration: none;
     text-transform: uppercase;
@@ -218,15 +250,15 @@ body{
     width: 100%;
     text-align: center;
     transition: 0.7s;
-  }
-  
-  .paralaxa .kratka a:hover {
+}
+
+.paralaxa .kratka a:hover {
     background: #fff;
     color: #000;
-  }
-  
-  /* --- MODAL --- */
-  .modal {
+}
+
+/* --- MODAL --- */
+.modal {
     display: none;
     position: fixed;
     z-index: 9999;
@@ -237,9 +269,9 @@ body{
     background: rgba(0, 0, 0, 0.7);
     align-items: center;
     justify-content: center;
-  }
-  
-  .modal-content {
+}
+
+.modal-content {
     background: rgba(0, 0, 0, 0.85);
     color: #fff;
     padding: 30px;
@@ -249,20 +281,20 @@ body{
     box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
     position: relative;
     animation: fadeIn 0.3s ease-in-out;
-  }
-  
-  .modal-content h2 {
+}
+
+.modal-content h2 {
     font-weight: 200;
     margin-top: 0;
     text-align: center;
-  }
-  
-  .modal-content p {
+}
+
+.modal-content p {
     text-align: center;
     line-height: 1.6;
-  }
-  
-  .close {
+}
+
+.close {
     position: absolute;
     top: 10px;
     right: 20px;
@@ -270,287 +302,628 @@ body{
     color: #fff;
     cursor: pointer;
     transition: 0.3s;
-  }
-  
-  .close:hover {
+}
+
+.close:hover {
     color: #f00;
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
-  }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 .kontakt {
+    background: #eee;
     display: flex;
-    height: 100vh; 
-    background: #acc;
     scroll-margin-top: 100px;
 }
 
 .kontakt .mapa {
-    flex: 0 0 50%; 
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    box-sizing: border-box;
 }
 
 .kontakt .mapa iframe {
     width: 100%;
     height: 100%;
-    border: none;
     background: #fff;
     padding: 10px;
-    box-sizing: border-box;
 }
 
 .kontakt .formularz {
-    flex: 1; 
+    flex: 2;
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding: 40px;
-    box-sizing: border-box;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+    width: 100%;
 }
-.kontakt .formularz-zawartosc {
-    text-align: center; 
-  }
 
-.panele{
+.kontakt .formularz form {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 15px;
+}
+
+.kontakt .formularz form input[type="text"],
+.kontakt .formularz form input[type="tel"]
+
+/*definicja tylko dla pól input typu text oraz tel*/
+    {
+    width: 100%;
+    height: 48px;
+    padding: 5px 10px;
+}
+
+.kontakt .formularz form textarea {
+    /*definicja dla pola obszaru tekstowego*/
+    width: 100%;
+    height: 250px;
+    resize: vertical;
+    padding: 5px 10px;
+}
+
+.kontakt .formularz form .wiersz {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+.kontakt .formularz form fieldset {
+    background: #fff;
+    width: 100%;
+    display: flex;
+    padding: 20px;
+    justify-content: space-around;
+}
+
+.kontakt .formularz form fieldset .opcja {
+    display: flex;
+    gap: 15px;
+}
+
+#tak,
+#nie,
+#nie_wiem {
+    accent-color: green;
+    /*zmiana koloru po zaznaczeniu dla pól radio według ich id*/
+}
+
+input[type="radio"]
+
+/*zwiększenie rozmaru pola radio. Podane wartości wysokości i szerokości muszą być takie same, gdyż jest to koło*/
+    {
+    height: 30px;
+    width: 30px;
+}
+
+.kontakt .formularz form input[type="submit"]
+
+/*parametry dla przycisku wysyłającego formularz z użyciem pola input typu submit*/
+    {
+    width: 50%;
+    background: #000;
+    color: #fff;
+    padding: 8px 10px;
+    align-self: flex-end;
+}
+
+.kontakt .formularz form input:focus,
+.kontakt .formularz form textarea:focus
+
+/*focus to status dla aktywnego (zaznaczonego) pola formularza*/
+    {
+    background: #444;
+    color: #fff;
+}
+
+.kontakt .formularz form input[type="submit"]:hover {
+    background: blue;
+}
+
+.panele {
     display: flex;
     scroll-margin-top: 100px;
     background: #acbc;
-    gap:10px;
+    gap: 10px;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
-.panele .tytul{
+
+.panele .tytul {
     text-align: center;
-    margin-bottom:50px;
-    font-size:1.25rem;
+    margin-bottom: 50px;
+    font-size: 1.25rem;
     display: flex;
     align-items: center;
 }
-.panele .tytul span{
-    color:blue;
+
+.panele .tytul span {
+    color: blue;
 }
-.panele .tytul:before{
-    content:'';
-    height:8px;
-    width:40px;
-    background:blue;
-    margin-right:10px;
+
+.panele .tytul:before {
+    content: '';
+    height: 8px;
+    width: 40px;
+    background: blue;
+    margin-right: 10px;
 }
-.panele .tytul:after{
-    content:'';
-    height:8px;
-    width:40px;
-    background:black;
-    margin-left:10px;
+
+.panele .tytul:after {
+    content: '';
+    height: 8px;
+    width: 40px;
+    background: black;
+    margin-left: 10px;
 }
-.panele .wiersz{
+
+.panele .wiersz {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap:10px;
+    gap: 10px;
 }
-.panele .panel{
-    flex:1;
-    background:#bbb;
-    height:350px;
-    width:280px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);/
+
+.panele .panel {
+    flex: 1;
+    background: #bbb;
+    height: 350px;
+    width: 280px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
-.panele .paski{
+
+.panele .paski {
     background: linear-gradient(45deg, #2da2ff 25%, #444 25%, #444 50%,
-    #2da2ff 50%, #2da2ff 75%, #444 75%, #444 100%);
+            #2da2ff 50%, #2da2ff 75%, #444 75%, #444 100%);
     background-size: 40px 40px;
     display: flex;
     justify-content: center;
     animation: animateBg 0.5s linear infinite;
     animation-play-state: paused;
-    position:relative;
+    position: relative;
     filter: grayscale(1);
     -webkit-filter: grayscale(1);
 }
-.panele .paski:nth-child(2){
+
+.panele .paski:nth-child(2) {
     background: linear-gradient(135deg, #ff61ae 25%, #444 25%, #444 50%,
-    #ff61ae 50%, #ff61ae 75%, #444 75%, #444 100%);
+            #ff61ae 50%, #ff61ae 75%, #444 75%, #444 100%);
     background-size: 40px 40px;
 }
-.panele .paski:hover{
+
+.panele .paski:hover {
     animation-play-state: running;
     filter: grayscale(0);
 }
-@keyframes animateBg{
-    0%{
+
+@keyframes animateBg {
+    0% {
         background-position: 0;
     }
-    100%{
+
+    100% {
         background-position: 40px;
     }
 }
-.panele .paski img{
+
+.panele .paski img {
     position: absolute;
-    bottom:0;
-    height:90%;
+    bottom: 0;
+    height: 90%;
     transition: height 0.5s;
 }
-.panele .paski img:hover{
-    height:110%;
+
+.panele .paski img:hover {
+    height: 110%;
 }
-.panele .paski p{
+
+.panele .paski p {
     font-size: 3rem;
     text-transform: uppercase;
-    z-index:999;
+    z-index: 999;
     position: absolute;
     bottom: 5%;
-    background:rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.6);
     width: 100%;
     text-align: center;
-    color:#fff;
+    color: #fff;
     transform: scale(0);
     transition: all 0.6s ease-in-out;
 }
-.panele .paski:hover p{
-    transform: scale(1);/
+
+.panele .paski:hover p {
+    transform: scale(1);
 }
-.panele .panel .scan{
+
+.panele .panel .scan {
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
-.panele .panel .scan .odcisk{
+
+.panele .panel .scan .odcisk {
     position: relative;
-    width:250px;
-    height:250px;
+    width: 250px;
+    height: 250px;
     background: url(../img/fp_1.png);
     background-size: 250px;
 }
-.panele .panel .scan .odcisk:before{
+
+.panele .panel .scan .odcisk:before {
     content: '';
     position: absolute;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background: url(../img/fp_2.png);
     background-size: 250px;
     animation: fprint 4s ease-in-out infinite;
 }
-@keyframes fprint{
-    0%, 100%{
-        height:0%;
+
+@keyframes fprint {
+
+    0%,
+    100% {
+        height: 0%;
     }
-    50%{
-        height:100%;
+
+    50% {
+        height: 100%;
     }
 }
-.panele .panel .scan .odcisk:after{
+
+.panele .panel .scan .odcisk:after {
     content: '';
     position: absolute;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 8px;
     background: #69f;
-    filter:drop-shadow(0 0 20px #69f)  drop-shadow(0 0 60px #69f);
+    filter: drop-shadow(0 0 20px #69f) drop-shadow(0 0 60px #69f);
     animation: fprint_linia 4s ease-in-out infinite;
 }
-@keyframes fprint_linia{
-    0%,100%{
-        top:0%;
+
+@keyframes fprint_linia {
+
+    0%,
+    100% {
+        top: 0%;
     }
-    50%{
-        top:100%;
+
+    50% {
+        top: 100%;
     }
 }
-.panele .panel .scan h3{
-    color:#69f;
+
+.panele .panel .scan h3 {
+    color: #69f;
     font-size: 1.25rem;
     margin-top: 20px;
     font-family: consolas;
     text-transform: uppercase;
-    filter:drop-shadow(0 0 20px #69f)  drop-shadow(0 0 60px #69f);
+    filter: drop-shadow(0 0 20px #69f) drop-shadow(0 0 60px #69f);
     animation: fprint_tekst 0.5s steps(1) infinite;
 }
-@keyframes fprint_tekst{
-    0%,100%{
+
+@keyframes fprint_tekst {
+
+    0%,
+    100% {
         opacity: 0;
     }
-    50%{
-        opacity:1;
+
+    50% {
+        opacity: 1;
     }
 }
-.panele .obrotowy{
+
+.panele .obrotowy {
     position: relative;
 }
-.panele .obrotowy .face{
+
+.panele .obrotowy .face {
     position: absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     transition: 0.6s;
 }
-.panele .obrotowy .face.face1{
+
+.panele .obrotowy .face.face1 {
     background: #69f;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1;
-    color:#fff;
+    color: #fff;
     transform-origin: bottom;
 }
-.panele .obrotowy .face.face1 i{
+
+.panele .obrotowy .face.face1 i {
     font-size: 3rem;
     text-align: center;
     display: block;
 }
-.panele .obrotowy .face.face1 h3{
+
+.panele .obrotowy .face.face1 h3 {
     font-size: 2rem;
     font-weight: 300;
-    margin-top:15px;
+    margin-top: 15px;
 }
-.panele .obrotowy:hover .face.face1{
+
+.panele .obrotowy:hover .face.face1 {
     transform: translateY(-100%) rotateX(90deg);
-    background:#c00;
+    background: #c00;
 }
-.panele .obrotowy .face.face2{
-    padding:20px;
+
+.panele .obrotowy .face.face2 {
+    padding: 20px;
     transform-origin: top;
     transform: translateY(100%) rotateX(90deg);
 }
-.panele .obrotowy:hover .face.face2{
+
+.panele .obrotowy:hover .face.face2 {
     transform: translateY(0) rotateX(0deg);
 }
-.stopka{
-    background:#222;
-    min-height:200px;
+
+.stopka {
+    background: #222;
+    min-height: 200px;
     display: flex;
+    padding: 10px 25px;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    color: #fff;
+    padding: 40px;
 }
-.stopka .footer{
-    flex:1;
+
+.stopka a {
+    color: #fff;
+    text-decoration: none;
+    transition: 0.6s;
 }
-.stopka .footer img{
-    width:Auto;
-    flex:1;
-    height:70%;
+
+.stopka a:hover {
+    color: #c00;
+}
+
+.stopka .gorna {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.stopka .footer {
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    display: flex;
+    align-items: flex-start;
     justify-content: center;
+    flex-direction: column;
 
 }
-.test{
-    background: #eee;
-    width:300px;
-    height:100px;
-    padding:20px;
+
+.stopka .footer .linia {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
-.full{
-    height: calc(100vh - 100px);
+
+.stopka .footer .adres {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.stopka .footer .linia i {
+    font-size: 1.5rem;
+}
+
+.stopka .footer h3 {
+    margin-bottom: 20px;
+}
+
+.stopka .footer ul {
+    list-style-type: none;
+}
+
+.stopka .footer ul li {
+    margin-bottom: 10px;
+}
+
+.stopka .footer img {
+    width: 100px;
+    height: auto;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.stopka .footer .zapis {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.stopka .footer .zapis input[type="text"] {
+    background: none;
+    height: 40px;
+    padding: 8px;
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.stopka .footer .zapis input[type="text"]:focus {
+    background: #fff;
+    color: #000;
+}
+
+.stopka .footer .zapis a {
+    border: 1px solid #fff;
+    padding: 8px 20px;
+    width: 50%;
+    text-align: center;
+    align-self: flex-end;
+    transition: 0.5s;
+}
+
+.stopka .footer .zapis a:hover {
+    background: #fff;
+    color: #000;
+}
+
+.stopka .dolna {
+    margin-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.6);
+    padding-top: 30px;
+    width: 75%;
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.test {
+    background: #eee;
+    width: 300px;
+    height: 100px;
+    padding: 20px;
+}
+
+.full {
+    min-height: calc(100vh - 100px);
+}
+
+.zadzwon {
+    position: fixed;
+    bottom: 40px;
+    left: 40px;
+    width: 100px;
+    height: 100px;
+    background: darkgreen;
+    border-radius: 50%;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 100, 0, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(0, 100, 0, 0);/
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 100, 0, 0);
+    }
+}
+
+.zadzwon a {
+    color: #fff;
+}
+
+.checkbtn {
+    font-size: 2rem;
+    margin-right: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    display: none;
+    order: 5;
+}
+
+#check {
+    display: none;
+}
+
+@media(max-width:940px) {
+    .header .menu {
+        width: 100%;
+        position: absolute;
+        top: 100px;
+        left: -100%;
+        height: calc(100vh - 100px);
+        transition: all 0.5s;
+    }
+
+    .header .menu ul {
+        flex-direction: column;
+        background: #222;
+    }
+
+    .header .menu ul a {
+        color: #fff;
+    }
+
+    .header .socialki {
+        justify-content: flex-end;
+    }
+
+    .checkbtn {
+        display: block;
+    }
+
+    #check:checked~.menu {
+        left: 0;
+    }
+
+    .opis,
+    .kontakt {
+        flex-direction: column;
+    }
+
+    .opis .zdjecie {
+        width: 100%;
+    }
+
+    .kontakt .mapa iframe {
+        min-height: 400px;
+    }
+
+    .panele .wiersz {
+        display: block !important;
+        margin-bottom: 20px;
+    }
+
+    .panele .wiersz .panel {
+        margin-bottom: 20px;
+    }
+
+    .stopka .gorna {
+        flex-direction: column;
+    }
+
+    .stopka .footer {
+        margin-bottom: 20px;
+    }
 }

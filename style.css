@@ -1,32 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-/* --- RESET --- */
+/* RESET – bez rzeczy, które psuły layout globalnie */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     scroll-behavior: smooth;
+    -webkit-scroll-behavior: smooth;
 }
 
-/* Body */
+/* Obrazki responsywnie (bezpieczne) */
+img,
+video {
+    max-width: 100%;
+    height: auto;
+}
+
 body {
     background: #fff;
     margin: 0 auto;
-    width: 100%;
 }
 
-/* --- HEADER --- */
 .header {
     background: #ccc;
     height: 100px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     position: sticky;
     top: 0;
     z-index: 99999999;
-    padding: 0 20px;
+}
+
+.header .logo1 {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .header .logo1 img {
@@ -34,20 +45,32 @@ body {
     width: auto;
 }
 
+.header .menu {
+    flex: 8;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .header .menu ul {
     display: flex;
     list-style-type: none;
-    gap: 20px;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
 }
 
 .header .menu ul a {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 100%;
     color: #000;
     text-decoration: none;
     transition: 0.7s;
-    padding: 10px 15px;
 }
 
 .header .menu ul a:hover {
@@ -55,11 +78,36 @@ body {
     color: #fff;
 }
 
-.header .socialki {
+.header .menu ul a li {
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.header .socialki {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: 900;
+    gap: 10px;
+}
+
+/* Poprawione 'screen' + spacje w media queries */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    .header {
+        /* Uwaga: to działa w grid, ale header ma flex – zostawiam bez zmian dla kompatybilności */
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .header {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
 }
 
 .header .socialki a,
@@ -76,9 +124,11 @@ body {
     color: red;
 }
 
-/* --- BANER --- */
 .baner {
-    background: url(../img/bg1.jpg) no-repeat center/cover;
+    background: url(../img/bg1.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -86,8 +136,7 @@ body {
 
 .baner .kratka {
     margin-right: 5%;
-    width: 100%;
-    max-width: 400px;
+    width: 400px;
     min-height: 300px;
     background: rgba(0, 0, 0, 0.5);
     color: #fff;
@@ -122,14 +171,13 @@ body {
     color: #000;
 }
 
-/* --- OPIS --- */
 .opis {
     background: #cca;
     display: flex;
     align-items: center;
+    scroll-margin-top: 100px;
     gap: 20px;
     padding: 20px;
-    scroll-margin-top: 100px;
 }
 
 .opis .zdjecie {
@@ -140,8 +188,8 @@ body {
 }
 
 .opis .zdjecie img {
-    max-width: 100%;
-    height: auto;
+    width: 400px;
+    height: 400px;
     background: #caa;
     border-radius: 50%;
     transition: 0.7s;
@@ -159,9 +207,13 @@ body {
     justify-content: center;
 }
 
-/* --- PARALAXA --- */
 .paralaxa {
-    background: url(../img/bg2.jpg) no-repeat center/cover fixed;
+    background: url(../img/bg2.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    /*powoduje przyklejenie obrazu tła do okna przeglądarki*/
+    background-attachment: fixed;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -170,8 +222,7 @@ body {
 
 .paralaxa .kratka {
     margin-left: 10%;
-    width: 100%;
-    max-width: 400px;
+    width: 400px;
     min-height: 300px;
     background: rgba(0, 0, 0, 0.5);
     color: #fff;
@@ -269,21 +320,20 @@ body {
     }
 }
 
-/* --- KONTAKT --- */
 .kontakt {
     display: flex;
-    flex-wrap: wrap;
+    height: 100vh;
     background: #acc;
     scroll-margin-top: 100px;
 }
 
-.kontakt .mapa,
-.kontakt .formularz {
-    flex: 1 1 50%;
+.kontakt .mapa {
+    flex: 0 0 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
+    box-sizing: border-box;
 }
 
 .kontakt .mapa iframe {
@@ -295,15 +345,27 @@ body {
     box-sizing: border-box;
 }
 
-/* --- PANELE --- */
-.panele {
+.kontakt .formularz {
+    flex: 1;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.kontakt .formularz-zawartosc {
+    text-align: center;
+}
+
+.panele {
+    display: flex;
     scroll-margin-top: 100px;
     background: #acbc;
     gap: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .panele .tytul {
@@ -336,20 +398,218 @@ body {
 
 .panele .wiersz {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    align-items: center;
     justify-content: center;
+    gap: 10px;
 }
 
 .panele .panel {
-    flex: 1 1 280px;
-    max-width: 350px;
+    flex: 1;
     background: #bbb;
     height: 350px;
+    width: 280px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-/* --- STOPKA --- */
+.panele .paski {
+    background: linear-gradient(45deg, #2da2ff 25%, #444 25%, #444 50%,
+            #2da2ff 50%, #2da2ff 75%, #444 75%, #444 100%);
+    background-size: 40px 40px;
+    display: flex;
+    justify-content: center;
+    animation: animateBg 0.5s linear infinite;
+    animation-play-state: paused;
+    position: relative;
+    filter: grayscale(1);
+    -webkit-filter: grayscale(1);
+}
+
+.panele .paski:nth-child(2) {
+    background: linear-gradient(135deg, #ff61ae 25%, #444 25%, #444 50%,
+            #ff61ae 50%, #ff61ae 75%, #444 75%, #444 100%);
+    background-size: 40px 40px;
+}
+
+.panele .paski:hover {
+    animation-play-state: running;
+    filter: grayscale(0);
+}
+
+@keyframes animateBg {
+    0% {
+        background-position: 0;
+    }
+
+    100% {
+        background-position: 40px;
+    }
+}
+
+.panele .paski img {
+    position: absolute;
+    bottom: 0;
+    height: 90%;
+    transition: height 0.5s;
+}
+
+.panele .paski img:hover {
+    height: 110%;
+}
+
+.panele .paski p {
+    font-size: 3rem;
+    text-transform: uppercase;
+    z-index: 999;
+    position: absolute;
+    bottom: 5%;
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    transform: scale(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.panele .paski:hover p {
+    transform: scale(1);
+}
+
+.panele .panel .scan {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panele .panel .scan .odcisk {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    background: url(../img/fp_1.png);
+    background-size: 250px;
+}
+
+.panele .panel .scan .odcisk:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../img/fp_2.png);
+    background-size: 250px;
+    animation: fprint 4s ease-in-out infinite;
+}
+
+@keyframes fprint {
+
+    0%,
+    100% {
+        height: 0%;
+    }
+
+    50% {
+        height: 100%;
+    }
+}
+
+.panele .panel .scan .odcisk:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: #69f;
+    filter: drop-shadow(0 0 20px #69f) drop-shadow(0 0 60px #69f);
+    animation: fprint_linia 4s ease-in-out infinite;
+}
+
+@keyframes fprint_linia {
+
+    0%,
+    100% {
+        top: 0%;
+    }
+
+    50% {
+        top: 100%;
+    }
+}
+
+.panele .panel .scan h3 {
+    color: #69f;
+    font-size: 1.25rem;
+    margin-top: 20px;
+    font-family: consolas;
+    text-transform: uppercase;
+    filter: drop-shadow(0 0 20px #69f) drop-shadow(0 0 60px #69f);
+    animation: fprint_tekst 0.5s steps(1) infinite;
+}
+
+@keyframes fprint_tekst {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.panele .obrotowy {
+    position: relative;
+}
+
+.panele .obrotowy .face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: 0.6s;
+}
+
+.panele .obrotowy .face.face1 {
+    background: #69f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    color: #fff;
+    transform-origin: bottom;
+}
+
+.panele .obrotowy .face.face1 i {
+    font-size: 3rem;
+    text-align: center;
+    display: block;
+}
+
+.panele .obrotowy .face.face1 h3 {
+    font-size: 2rem;
+    font-weight: 300;
+    margin-top: 15px;
+}
+
+.panele .obrotowy:hover .face.face1 {
+    transform: translateY(-100%) rotateX(90deg);
+    background: #c00;
+}
+
+.panele .obrotowy .face.face2 {
+    padding: 20px;
+    transform-origin: top;
+    transform: translateY(100%) rotateX(90deg);
+}
+
+.panele .obrotowy:hover .face.face2 {
+    transform: translateY(0) rotateX(0deg);
+}
+
 .stopka {
     background: #222;
     min-height: 200px;
@@ -361,10 +621,14 @@ body {
 }
 
 .stopka .footer img {
+    width: auto;
+    flex: 1;
     height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* --- TEST --- */
 .test {
     background: #eee;
     width: 300px;
@@ -373,46 +637,5 @@ body {
 }
 
 .full {
-    min-height: calc(100vh - 100px);
-}
-
-/* --- MEDIA QUERIES --- */
-@media screen and (max-width: 767px) {
-    .header {
-        flex-direction: column;
-        height: auto;
-        padding: 10px;
-    }
-
-    .header .menu ul {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .opis {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .kontakt {
-        flex-direction: column;
-    }
-
-    .kontakt .mapa,
-    .kontakt .formularz {
-        flex: 1 1 100%;
-        padding: 10px;
-    }
-}
-
-@media screen and (min-width: 768px) and (max-width: 1199px) {
-    .header {
-        padding: 0 40px;
-    }
-}
-
-@media screen and (min-width: 1200px) {
-    .header {
-        padding: 0 80px;
-    }
+    height: calc(100vh - 100px);
 }

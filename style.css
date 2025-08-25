@@ -1,0 +1,418 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* --- RESET --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* Body */
+body {
+    background: #fff;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* --- HEADER --- */
+.header {
+    background: #ccc;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 99999999;
+    padding: 0 20px;
+}
+
+.header .logo1 img {
+    height: 70px;
+    width: auto;
+}
+
+.header .menu ul {
+    display: flex;
+    list-style-type: none;
+    gap: 20px;
+}
+
+.header .menu ul a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    text-decoration: none;
+    transition: 0.7s;
+    padding: 10px 15px;
+}
+
+.header .menu ul a:hover {
+    background: #c00;
+    color: #fff;
+}
+
+.header .socialki {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 900;
+}
+
+.header .socialki a,
+.header .socialki a:visited {
+    color: #000;
+    font-size: 2rem;
+}
+
+.header .socialki a:hover i.fa-square-facebook {
+    color: blue;
+}
+
+.header .socialki a:hover i.fa-square-youtube {
+    color: red;
+}
+
+/* --- BANER --- */
+.baner {
+    background: url(../img/bg1.jpg) no-repeat center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.baner .kratka {
+    margin-right: 5%;
+    width: 100%;
+    max-width: 400px;
+    min-height: 300px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.baner .kratka h1 {
+    font-weight: 200;
+}
+
+.baner .kratka p {
+    text-align: center;
+}
+
+.baner .kratka a {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px solid #fff;
+    padding: 10px 30px;
+    width: 100%;
+    text-align: center;
+    transition: 0.7s;
+}
+
+.baner .kratka a:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* --- OPIS --- */
+.opis {
+    background: #cca;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    scroll-margin-top: 100px;
+}
+
+.opis .zdjecie {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.opis .zdjecie img {
+    max-width: 100%;
+    height: auto;
+    background: #caa;
+    border-radius: 50%;
+    transition: 0.7s;
+}
+
+.opis .zdjecie img:hover {
+    border-radius: 50% 5%;
+    transform: rotate(35deg) scale(1.2);
+}
+
+.opis .opis {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* --- PARALAXA --- */
+.paralaxa {
+    background: url(../img/bg2.jpg) no-repeat center/cover fixed;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    scroll-margin-top: 100px;
+}
+
+.paralaxa .kratka {
+    margin-left: 10%;
+    width: 100%;
+    max-width: 400px;
+    min-height: 300px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.paralaxa .kratka h1 {
+    font-weight: 200;
+}
+
+.paralaxa .kratka p {
+    text-align: center;
+}
+
+.paralaxa .kratka a {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px solid #fff;
+    padding: 10px 30px;
+    width: 100%;
+    text-align: center;
+    transition: 0.7s;
+}
+
+.paralaxa .kratka a:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* --- MODAL --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+    position: relative;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content h2 {
+    font-weight: 200;
+    margin-top: 0;
+    text-align: center;
+}
+
+.modal-content p {
+    text-align: center;
+    line-height: 1.6;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close:hover {
+    color: #f00;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* --- KONTAKT --- */
+.kontakt {
+    display: flex;
+    flex-wrap: wrap;
+    background: #acc;
+    scroll-margin-top: 100px;
+}
+
+.kontakt .mapa,
+.kontakt .formularz {
+    flex: 1 1 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.kontakt .mapa iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* --- PANELE --- */
+.panele {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    scroll-margin-top: 100px;
+    background: #acbc;
+    gap: 10px;
+}
+
+.panele .tytul {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+}
+
+.panele .tytul span {
+    color: blue;
+}
+
+.panele .tytul:before {
+    content: '';
+    height: 8px;
+    width: 40px;
+    background: blue;
+    margin-right: 10px;
+}
+
+.panele .tytul:after {
+    content: '';
+    height: 8px;
+    width: 40px;
+    background: black;
+    margin-left: 10px;
+}
+
+.panele .wiersz {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.panele .panel {
+    flex: 1 1 280px;
+    max-width: 350px;
+    background: #bbb;
+    height: 350px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* --- STOPKA --- */
+.stopka {
+    background: #222;
+    min-height: 200px;
+    display: flex;
+}
+
+.stopka .footer {
+    flex: 1;
+}
+
+.stopka .footer img {
+    height: 70%;
+}
+
+/* --- TEST --- */
+.test {
+    background: #eee;
+    width: 300px;
+    height: 100px;
+    padding: 20px;
+}
+
+.full {
+    min-height: calc(100vh - 100px);
+}
+
+/* --- MEDIA QUERIES --- */
+@media screen and (max-width: 767px) {
+    .header {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+
+    .header .menu ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .opis {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .kontakt {
+        flex-direction: column;
+    }
+
+    .kontakt .mapa,
+    .kontakt .formularz {
+        flex: 1 1 100%;
+        padding: 10px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    .header {
+        padding: 0 40px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .header {
+        padding: 0 80px;
+    }
+}

@@ -69,7 +69,7 @@
     <div class="paralaxa full" id="paralaxa">
         <div class="kratka">
             <h1>Przemyślenia</h1>
-            <p>Jestem kim jestem wiele  już potrafie, a czego jeszcze nie umiem chętnie się naucze. </p>
+            <p>Jestem kim jestem wiele już potrafie, a czego jeszcze nie umiem chętnie się naucze. </p>
             <a href="#" id="openModal">Zobacz więcej</a>
         </div>
     </div>
@@ -86,15 +86,38 @@
                 src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d48415.47003508895!2d18.95195149952186!3d50.375416633790515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spl!2spl!4v1746529947351!5m2!1spl!2spl"></iframe>
         </div>
         <div class="formularz">
-            <div class="formularz-zawartość">
-                <h1>Kontakt</h1>
-                <p>
-                <h2>Leszek Czesnoić</h2><br>
-                <h2>lczesnoic@gmail.com</h2><br>
-                <h2>+48 668 103 897</h2><br>
-                <h2>Piekary Śląskie</h2>
-                </p>
-            </div>
+            <h3>Formularz</h3>
+            <form>
+                <div class="wiersz">
+                    <input type="text" id="imie" name="imie" required placeholder="Podaj imię">
+                    <input type="text" id="nazwisko" name="nazwisko" required placeholder="Podaj nazwisko">
+                </div>
+                <div class="wiersz">
+                    <input type="tel" id="telefon" name="telefon" required
+                        placeholder="Numer telefonu (format 555555555)" pattern="[0-9]{9}">
+                    <input type="text" id="email" name="email" required placeholder="Podaj email">
+                </div>
+                <input type="text" id="temat" name="temat" required placeholder="Podaj temat wiadomości">
+                <fieldset>
+                    <legend>Czy jesteś naszym klientem?</legend>
+                    <div class="opcja">
+                        <input type="radio" id="tak" name="wybor">
+                        <label for="tak">Tak</label>
+                    </div>
+                    <div class="opcja">
+                        <input type="radio" id="nie" name="wybor">
+                        <label for="nie">Nie</label>
+                    </div>
+                    <div class="opcja">
+                        <input type="radio" id="nie_wiem" name="wybor">
+                        <label for="nie_wiem">Nie wiem</label>
+                    </div>
+                </fieldset>
+                <textarea id="wiadomosc" placeholder="Wpisz treść wiadomości" required></textarea>
+                <input type="submit" value="Wyślij wiadomość">
+            </form>
+
+
         </div>
     </div>
 
@@ -135,17 +158,61 @@
     </div>
     </div>
     <div class="stopka">
-        <div class="footer">Stopka 1
+        <div class="footer">
             <img src="img/logo1.jpg" alt="Opis obrazka" />
+            <div class="adres">
+                <div class="linia">
+                    <i class="fa-regular fa-envelope"></i>
+                    <p>ul.XXXXXXXXXXX ,<br>
+                        41-945 Piekary Śląskie</p>
+                </div>
+                <div class="linia">
+                    <i class="fa-solid fa-phone"></i>
+                    <p><a href="tel:48668103897">+48 668 103 897</a></p>
+                </div>
+                <div class="linia">
+                    <i class="fa-solid fa-at"></i>
+                    <p><a
+                            href="mailto:mail@poczta.com?cc=mail1@poczta.com&bcc=mail2@poczta.com&subject=Tytuł wiadomości&body=Wiadomość ze strony www">lczesnoic@gmail.com</a>
+                    </p>
+                </div>
+            </div>
         </div>
-        <div class="footer">Stopka 2</div>
-        <div class="footer">Stopka 3</div>
+        <div class="footer">
+            <h3>Informacje</h3>
+            <ul>
+                <li><a href="#">Polityka plików cookies</a></li>
+                <li><a href="#">Polityka prywatności</a></li>
+                <li><a href="#">Gwarancja i zwroty</a></li>
+                <li><a href="#">Warunki dostawy</a></li>
+                <li><a href="#">Współpraca</a></li>
+            </ul>
+        </div>
+        <div class="footer">
+            <h3>Newsletter</h3>
+            <div class="zapis">
+                <p>Zapisz się do naszego newslettera, aby być na bieżąco</p>
+                <input type="text" id="newsletter" name="newsletter" placeholder="Wpisz adres email">
+                <div class="linia">
+                    <input type="checkbox" id="zgoda" name="zgoda">
+                    <label for="zgoda">Wyrażam zgodę na...</label>
+                </div>
+                <a href="#">Zapisz się</a>
+            </div>
+
+        </div>
     </div>
-    </p>Tutaj może być co kolwiek np: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, commodi culpa delectus, velit aliquid quae
-    voluptas, quidem dolores sequi incidunt nemo recusandae distinctio quaerat eligendi esse necessitatibus officiis
-    dolorem quas?</p>
+    <div class="dolna">
+        <p>Copyright 2025 Leszek Czesnoić/p>
     </div>
-    <script src="script.js"></script>
+    </div>
+    <div class="zadzwon">
+        <a href="tel:+48668103897">
+            <i class="fa-solid fa-shake fa-phone-volume"></i>
+        </a>
+    </div>
+
+
 </body>
 
 </html>

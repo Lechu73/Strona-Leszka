@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strona pokazowa</title>
+    <title>Strona Leszka></title>
     <meta name="description" content="Opis zawartości dokumentu (max 160 zzs)">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -13,10 +13,15 @@
 </head>
 
 <body>
+
     <div class="header">
         <div class="logo1">
             <a href="index.html"><img src="img/logo1.jpg" alt="Piekary Śląskie" /></a>
         </div>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
         <div class="menu">
             <ul>
                 <a href="#">
@@ -25,8 +30,11 @@
                 <a href="#omnie">
                     <li>O mnie</li>
                 </a>
-                <a href="#paralaxa">
-                    <li>Paralaxa</li>
+                <a href="#galeria">
+                    <li>Galeria</li>
+                </a>
+                <a href="#usługi">
+                    <li>Usługi</li>
                 </a>
                 <a href="#kontakt">
                     <li>Kontakt</li>
@@ -44,40 +52,46 @@
     </div>
     <div class="baner full">
         <div class="kratka">
-            <h1>Moja strona</h1>
-            <p>To jest stona Leszka Czesnoić prezentująca przykładowe umiejętności<cite></cite></p>
+            <h1>STRONA POKAZOWA</h1>
+            <p>Strona Leszka prezentująca wiedze i umiejętności tworzenia ston internetowych </p>
             <a href="https://piekary.pl/">Zobacz więcej</a>
         </div>
     </div>
     <div class="opis full" id="omnie">
-        <div class="kontener">
-            <div class="zdjecie">
-                <img src="img/1Leszek.jpg" alt="Jestem kim jestem">
-            </div>
-            <div class="tekst">
-                <h1>Leszek Czesnoić</h1>
-                <p>Jestem informatykiem, programistą. Skończyłem Uniwersytet Merito w Poznaniu oddział zamiejscowy w
-                    Chorzowie. Poziom wykształcenia: inżynier. Strona ta powstała, aby pokazać przykładowe umiejętności
-                    tworzenia stron. Technologie z którymi się zapoznałem Html, Css. Sass, JavaScript, React, Python,
-                    Django, C#, Sql, Git i programy Oficce, Jira, Zabix, TaemViewer, Teams, Visual Studio, Sap. Jestem
-                    osobą komunikatywną lubiącom kontakt z ludzmi interesuje się informatyką, elektroniką i mechaniką
-                    ogólnie techniką nowe technologie itd.</p>
-            </div>
+        <div class="zdjecie">
+            <img src="img/1Leszek.jpg" alt="Jestem osobą kompetentną której może własnie szukasz">
+        </div>
+        <div class="opis">
+            <div class="tekst p1">Usługi</div>
+            <div class="tekst p2">Infomatyczne</div>
+            <div class="tekst p3">Elektryczne</div>
+            <div class="tekst p4">Gazownicze</div>
+            <div class="tekst p5">Hydrauliczne</div>
+        </div>
+    </div>
+    <div class="galeria full" id="galeria">
+        <div class="siatka">
+            <div class="item img1"><img src="img/bg1.jpg" alt=""></div>
+            <div class="item img2"><img src="img/bg2.jpg" alt=""></div>
+            <div class="item img3"><img src="img/bg3.jpg" alt=""></div>
+            <div class="item img4"><img src="img/bg4.jpg" alt=""></div>
+            <div class="item img5"><img src="img/bg5.jpg" alt=""></div>
+            <div class="item img6"><img src="img/bg6.jpg" alt=""></div>
         </div>
     </div>
 
-    <div class="paralaxa full" id="paralaxa">
+    <div class="usługi full" id="usługi">
         <div class="kratka">
-            <h1>Przemyślenia</h1>
-            <p>Jestem kim jestem wiele już potrafie, a czego jeszcze nie umiem chętnie się naucze. </p>
-            <a href="#" id="openModal">Zobacz więcej</a>
+            <h1>OFERTA</h1>Kierowana jest dla firm jak i osób prywatnych.
+            <p>Oferuje usługi informatycze i programistyczne a także usługi fachowca złotej rączki. </p>
+            <a href="#" id="openModal">Moja oferta</a>
         </div>
     </div>
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Twoja oferta</h2>
-            <p>Dla każdego coś dobrego</p>
+            <h2>Potrzebna pomoc</h2>
+            <p>Potrzebujesz pomocy dorze trafiłeś zadzwoń napisz a znajdziemy rozwiązanie</p>
         </div>
     </div>
     <div class="kontakt full" id="kontakt">
@@ -120,18 +134,16 @@
 
         </div>
     </div>
-
     <div class="panele full" id="panele">
-        <div class="tytul">To wszystko może być na twojej stronie &nbsp;<span>i wiele więcej to są tylko
-                przykłady</span></div>
+        <div class="tytul">To są tylko przykłady &nbsp;<span>które mogą być także na twojej stronie </span></div>
         <div class="wiersz">
             <div class="panel paski">
                 <img src="img/img1.webp" alt="man">
-                <p>man</p>
+                <p>komputery</p>
             </div>
             <div class="panel paski">
-                <img src="img/img2.webp" alt="woman">
-                <p>woman</p>
+                <img src="img/img2.jpg" alt="woman">
+                <p>telefony</p>
             </div>
             <div class="panel">
                 <div class="scan">
@@ -148,71 +160,71 @@
                 </div>
                 <div class="face face2">
                     <div class="content">
-                        </p>Czary Mary są Piekary
-                        <img src="img/logo1.jpg" alt="Opis obrazka" />
+                        <p>Polecam własne usługi w zakresie szeroko pojętej informatyki i programowania oraz prace
+                            elektryczne, ślusarkie, hydrauliczne, mechaniczne itd</p>
                     </div>
-                    </p> Piekary Śląskie
                 </div>
             </div>
         </div>
-    </div>
     </div>
     <div class="stopka">
-        <div class="footer">
-            <img src="img/logo1.jpg" alt="Opis obrazka" />
-            <div class="adres">
-                <div class="linia">
-                    <i class="fa-regular fa-envelope"></i>
-                    <p>ul.XXXXXXXXXXX ,<br>
-                        41-945 Piekary Śląskie</p>
-                </div>
-                <div class="linia">
-                    <i class="fa-solid fa-phone"></i>
-                    <p><a href="tel:48668103897">+48 668 103 897</a></p>
-                </div>
-                <div class="linia">
-                    <i class="fa-solid fa-at"></i>
-                    <p><a
-                            href="mailto:mail@poczta.com?cc=mail1@poczta.com&bcc=mail2@poczta.com&subject=Tytuł wiadomości&body=Wiadomość ze strony www">lczesnoic@gmail.com</a>
-                    </p>
+        <div class="gorna">
+            <div class="footer">
+                <img src="img/logo1.jpg" alt="Logo firmy">
+                <div class="adres">
+                    <div class="linia">
+                        <i class="fa-regular fa-envelope"></i>
+                        <p>xxxxxxxxxxxxxx,<br>
+                            41-945 Piekary Śląskie</p>
+                    </div>
+                    <div class="linia">
+                        <i class="fa-solid fa-phone"></i>
+                        <p><a href="tel:48668103897">+48 668 103 897</a></p>
+                    </div>
+                    <div class="linia">
+                        <i class="fa-solid fa-at"></i>
+                        <p><a
+                                href="mailto:mail@poczta.com?cc=mail1@poczta.com&bcc=mail2@poczta.com&subject=Tytuł wiadomości&body=Wiadomość ze strony www">lczesnoic@gmail.com</a>
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="footer">
-            <h3>Informacje</h3>
-            <ul>
-                <li><a href="#">Polityka plików cookies</a></li>
-                <li><a href="#">Polityka prywatności</a></li>
-                <li><a href="#">Gwarancja i zwroty</a></li>
-                <li><a href="#">Warunki dostawy</a></li>
-                <li><a href="#">Współpraca</a></li>
-            </ul>
-        </div>
-        <div class="footer">
-            <h3>Newsletter</h3>
-            <div class="zapis">
-                <p>Zapisz się do naszego newslettera, aby być na bieżąco</p>
-                <input type="text" id="newsletter" name="newsletter" placeholder="Wpisz adres email">
-                <div class="linia">
-                    <input type="checkbox" id="zgoda" name="zgoda">
-                    <label for="zgoda">Wyrażam zgodę na...</label>
-                </div>
-                <a href="#">Zapisz się</a>
+            <div class="footer">
+                <h3>Informacje</h3>
+                <ul>
+                    <li><a href="#">Polityka plików cookies</a></li>
+                    <li><a href="#">Polityka prywatności</a></li>
+                    <li><a href="#">Gwarancja i zwroty</a></li>
+                    <li><a href="#">Warunki dostawy</a></li>
+                    <li><a href="#">Współpraca</a></li>
+                </ul>
             </div>
+            <div class="footer">
+                <h3>Newsletter</h3>
+                <div class="zapis">
+                    <p>Zapisz się do naszego newslettera, aby być na bieżąco</p>
+                    <input type="text" id="newsletter" name="newsletter" placeholder="Wpisz adres email">
+                    <div class="linia">
+                        <input type="checkbox" id="zgoda" name="zgoda">
+                        <label for="zgoda">Wyrażam zgodę na...</label>
+                    </div>
+                    <a href="#">Zapisz się</a>
+                </div>
 
+            </div>
         </div>
-    </div>
-    <div class="dolna">
-        <p>Copyright 2025 Leszek Czesnoić/p>
-    </div>
+        <div class="dolna">
+            <p>Copyright 2025 lczesnoic@gmail.com</p>
+        </div>
     </div>
     <div class="zadzwon">
+        <!--dodany element wyświetlający przyklejony do okna przeglądarki element służący do szybkiego dzwonienia, zawsze przyklejony w tym samym miejscu okna przeglądarki-->
         <a href="tel:+48668103897">
             <i class="fa-solid fa-shake fa-phone-volume"></i>
         </a>
     </div>
 
-
+    <!--<div class="test">Jakiś tekst</div>-->
 </body>
 
 </html>

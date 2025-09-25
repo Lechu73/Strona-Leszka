@@ -7,26 +7,30 @@
     font-family: 'Poppins', sans-serif;
     scroll-behavior: smooth;
     -webkit-scroll-behavior: smooth;
+    /*powoduje dodanie płynnego przewijania strony po kliknięciu linku z menu. przedostek -webkit dla przeglądarek chrome i safari*/
 }
 
 body {
-
     background: #fff;
+    /*max-width: 1180px;
+    margin: 0 auto;*/
     position: relative;
+    /*ma na celu utworzenie punktu odniesienia dla elementów pozycjonowanych absolutnie względem całego body - w tym przypadku zielony guzik do dzwonienia*/
 }
 
 .header {
     background: #ccc;
     height: 100px;
     display: flex;
+    /*wyświetla cały dokument jako flex, ale wyświetla się on we wierszu*/
     align-items: center;
+    /*align-items wyrównuje element poprzecznie do kierunku, w którym wyświetla się flex (domyślnie wiersz)*/
     position: sticky;
     top: 0;
     z-index: 99999999;
-
 }
 
-.header .logo1 {
+.header .logo {
     flex: 1;
     height: 100%;
     display: flex;
@@ -34,13 +38,14 @@ body {
     justify-content: center;
 }
 
-.header .logo1 {
-    height: 70px;
+.header .logo img {
+    height: 80px;
     width: auto;
 }
 
 .header .menu {
     flex: 8;
+    /*użycie wartości 8 powoduje, że element ten będzie 8 razy szerszy niż bazowy, ustawiony dla header .logo*/
     height: 100%;
     display: flex;
     align-items: center;
@@ -82,18 +87,22 @@ body {
 
 .header .socialki {
     flex: 1;
+    /*ten element będzie tak samo szeroki jak header .logo*/
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 900;
+    /*zmienia grubość czcionki zgodnie z parametrami pochodzącymi z czcionki*/
     gap: 10px;
+    /*ustawia odstęp pomiędzy kolejnymi elementami flexa*/
 }
 
 .header .socialki a,
 .header .socialki a:visited {
     color: #000;
     font-size: 2rem;
+    /*użycie jednostki rem powoduje, że czcionka będzie się odnosiła do czcionki bazowej dla systemu. Jeżeli używana była by skala em, wówczas odniesienie było by do poprzednio użytej wielkości czcionki. czyli jeżeli wcześniej zadeklarowalibyśmy jakiemuś elementowi font-size na 5em, a następnie temu na 3em, to docelowo czcionka by była najpierw powiększona x5, a potem jeszcze x3*/
 }
 
 .header .socialki a:hover i.fa-square-facebook {
@@ -106,12 +115,18 @@ body {
 
 .baner {
     background: url(../img/bg1.jpg);
+    /*podana ścieżka do pliku uwzględnia, że plik css, w którym znajduje się definicja tła znajduje się w innym folderze, niż follder główny. Jeżeli użyjemy linku img/1.jpg wówczas folder img będzie szukany wewnątrz folderu css. Użycie ../ powoduje przejście katalog wyżej*/
     background-repeat: no-repeat;
+    /*usuwa powtarzanie tła, ktore domyślnie jest ustawione na powtarzanie poziomo i pionowo*/
     background-position: center;
+    /*wyśrodkowuje obrazek tła. pozycja ma dwa parametry - poziomy i pionowy - i pozwala ustawić punkt zaczepienia tła w bloku, w którym obraz tła występuje. Bazowo jest to górny prawy róg. Punktami odniesienia są wszystkie rogi obrazu, połowy boków oraz środek*/
     background-size: cover;
+    /*powoduje rozciągniecie obrazu do dłuższego z boków bloku, wewnątrz którego tło się znajduje*/
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    /*przesuwa zawartość bloku do końca flexa*/
+
 }
 
 .baner .kratka {
@@ -119,12 +134,16 @@ body {
     width: 400px;
     min-height: 300px;
     background: rgba(0, 0, 0, 0.5);
+    /*dodatkowy parametr a w kolorze odpowiada za przezroczystość tła. wartości od 0 do 1 odpowiadają 0% do 100%*/
     color: #fff;
     padding: 20px;
     display: flex;
     flex-direction: column;
+    /*obraca kierunek flexa z wiersza na kolumnę*/
     justify-content: space-between;
+    /*w związku z obróceniem kierunku flexa na pionowy w flex-direction justify-content działa dalej zgodnie z kierunkiem flexa, a on teraz nie jest poziomy, tylko pionowy*/
     align-items: center;
+    /*opacity: 0.7;*/
 }
 
 .baner .kratka h1 {
@@ -139,6 +158,7 @@ body {
     color: #fff;
     text-decoration: none;
     text-transform: uppercase;
+    /*zmienia cały tekst na duże litery*/
     border: 1px solid #fff;
     padding: 10px 30px;
     width: 100%;
@@ -155,10 +175,11 @@ body {
     background: #222;
     display: flex;
     scroll-margin-top: 100px;
+    /*ustawia margines początkowy sekcji uwzględniając wysokość sekcji header, aby zawartość sekcji nie chowała się pod nagłówkiem*/
 }
 
 .opis .zdjecie {
-    flex: 0 0 35%;
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -167,6 +188,7 @@ body {
 .opis .zdjecie img {
     width: 300px;
     height: 300px;
+    /*filter:drop-shadow(10px 10px 18px #000);*/
     background: #ddd;
     border-radius: 50%;
     transition: 0.7s;
@@ -180,7 +202,7 @@ body {
 .opis .opis {
     width: 100%;
     height: 100%;
-    flex: 0 0 65%;
+    flex: 2;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -188,11 +210,12 @@ body {
 }
 
 .opis .opis .tekst {
-    font-size: 4rem;
-    font-weight: 250;
+    font-size: 6rem;
+    font-weight: 900;
 }
 
-s .p1 {
+.p1 {
+    /*dodanie cienia do tekstu w czterech głównych kierunkach*/
     text-shadow: 2px 0px 2px yellow,
         -2px 0 2px yellow,
         0 2px 2px yellow,
@@ -200,6 +223,7 @@ s .p1 {
 }
 
 .p2 {
+    /*dodanie cieniu w czterech głownych kierunkach oraz dodatkowo na rogach*/
     text-shadow: 2px 0px 2px yellow,
         -2px 0 2px yellow,
         0 2px 2px yellow,
@@ -211,40 +235,13 @@ s .p1 {
 }
 
 .p3 {
+    /*rozwiązanie najlepsze aby dodać obrys do tekstu*/
     -webkit-text-fill-color: #222;
+    /*wypełnienie tekstu kolorem*/
     -webkit-text-stroke: 2px;
+    /*dodanie grubości obrysu*/
     -webkit-text-stroke-color: yellow;
-}
-
-.p4 {
-    -webkit-text-fill-color: #222;
-    -webkit-text-stroke: 2px;
-    -webkit-text-stroke-color: yellow;
-}
-
-
-.p5 {
-    -webkit-text-fill-color: #222;
-    -webkit-text-stroke: 2px;
-    -webkit-text-stroke-color: yellow;
-}
-
-.p6 {
-    -webkit-text-fill-color: #222;
-    -webkit-text-stroke: 2px;
-    -webkit-text-stroke-color: yellow;
-}
-
-.p7 {
-    -webkit-text-fill-color: #222;
-    -webkit-text-stroke: 2px;
-    -webkit-text-stroke-color: yellow;
-}
-
-.p8 {
-    -webkit-text-fill-color: #222;
-    -webkit-text-stroke: 2px;
-    -webkit-text-stroke-color: yellow;
+    /*Dodanie koloru obrysu*/
 }
 
 .galeria {
@@ -258,33 +255,37 @@ s .p1 {
     padding: 40px;
     position: relative;
     display: grid;
+    /*tworzy blok oparty na siatce*/
     width: 900px;
+    /*chcemy trzy kolumny, więc określamy szerokość siatki na liczbę podzielną przez 3*/
     grid-gap: 10px;
+    /*ustawia odległości pomiędzy elementami zawartymi wewnątrz siatki*/
     grid-template-columns: 1fr 1fr 1fr;
+    /*definiuje szerokość kolumn. Trzy kolumny o tej samej szerokości - jednostka fr*/
     grid-template-rows: 200px 200px 200px 200px;
+    /*ustawia wysokość poszczególnych wierszy*/
     grid-template-areas: "img1 img3 img5"
         "img1 img3 img6"
         "img2 img3 img6"
         "img2 img4 img4";
-}
-
-.galeria {
-    background: #c22;
+    /*tutaj definiujemy nazwy obszarów, których będzie używała nasza siatka. Same obszary są przypisane do poszczególnych klas przypisanych unikalnie obrazkom*/
 }
 
 .galeria .siatka .item {
-    background: #222;
     position: relative;
+    /*względem tego elementu będą pozycjonowane obrazki umieszczone wewnątrz siatki*/
     border: 1px solid #ccc;
 }
 
 .galeria .siatka img {
     position: absolute;
+    /*definiuje pozycjonowanie elementu względem pierwszego elementu mającego wartość relative, znajdującego się w klasach rodzicach (w naszym przypadku będzie to klasa item*/
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    /*powoduje wypełnienie całego obszaru diva*/
     filter: grayscale(1);
     opacity: 0.5;
 }
@@ -294,8 +295,13 @@ s .p1 {
     opacity: 1;
 }
 
+/*.galeria:hover .siatka img:not(:hover){
+    filter: grayscale(1);
+    opacity: 0.5;
+}*/
 .galeria .siatka .img1 {
     grid-area: img1;
+    /*definiuje nazwę obszaru grida dla elementu zawierającego tę klasę*/
 }
 
 .galeria .siatka .img2 {
@@ -318,19 +324,21 @@ s .p1 {
     grid-area: img6;
 }
 
-.usługi {
+.paralaxa {
     background: url(../img/bg2.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    /*powoduje pokrycie obrazem obszaru całego diva, w którym ten obraz będzie umieszczony jako tło*/
     background-attachment: fixed;
+    /*powoduje przyklejenie obrazu tła do okna przeglądarki*/
     display: flex;
     align-items: center;
     justify-content: flex-start;
     scroll-margin-top: 100px;
 }
 
-.usługi .kratka {
+.paralaxa .kratka {
     margin-left: 10%;
     width: 400px;
     min-height: 300px;
@@ -344,15 +352,15 @@ s .p1 {
     /*opacity: 0.7;*/
 }
 
-.usługi .kratka h1 {
+.paralaxa .kratka h1 {
     font-weight: 200;
 }
 
-.usługi .kratka p {
+.paralaxa .kratka p {
     text-align: center;
 }
 
-.usługi .kratka a {
+.paralaxa .kratka a {
     color: #fff;
     text-decoration: none;
     text-transform: uppercase;
@@ -363,7 +371,7 @@ s .p1 {
     transition: 0.7s;
 }
 
-.usługi .kratka a:hover {
+.paralaxa .kratka a:hover {
     background: #fff;
     color: #000;
 }
@@ -409,13 +417,17 @@ s .p1 {
 }
 
 .kontakt .formularz form input[type="text"],
-.kontakt .formularz form input[type="tel"] {
+.kontakt .formularz form input[type="tel"]
+
+/*definicja tylko dla pól input typu text oraz tel*/
+    {
     width: 100%;
     height: 48px;
     padding: 5px 10px;
 }
 
 .kontakt .formularz form textarea {
+    /*definicja dla pola obszaru tekstowego*/
     width: 100%;
     height: 250px;
     resize: vertical;
@@ -445,14 +457,21 @@ s .p1 {
 #nie,
 #nie_wiem {
     accent-color: green;
+    /*zmiana koloru po zaznaczeniu dla pól radio według ich id*/
 }
 
-input[type="radio"] {
+input[type="radio"]
+
+/*zwiększenie rozmaru pola radio. Podane wartości wysokości i szerokości muszą być takie same, gdyż jest to koło*/
+    {
     height: 30px;
     width: 30px;
 }
 
-.kontakt .formularz form input[type="submit"] {
+.kontakt .formularz form input[type="submit"]
+
+/*parametry dla przycisku wysyłającego formularz z użyciem pola input typu submit*/
+    {
     width: 50%;
     background: #000;
     color: #fff;
@@ -461,7 +480,10 @@ input[type="radio"] {
 }
 
 .kontakt .formularz form input:focus,
-.kontakt .formularz form textarea:focus {
+.kontakt .formularz form textarea:focus
+
+/*focus to status dla aktywnego (zaznaczonego) pola formularza*/
+    {
     background: #444;
     color: #fff;
 }
@@ -471,7 +493,6 @@ input[type="radio"] {
 }
 
 .panele {
-    background: #69f;
     display: flex;
     scroll-margin-top: 100px;
     gap: 10px;
@@ -492,15 +513,16 @@ input[type="radio"] {
     color: blue;
 }
 
+/*subklasy before i after pozwalają na umieszczenie dodatkowych elementów przed i za elementem, do którego są przypisane*/
 .panele .tytul:before {
     content: '';
-
+    /*pozwala na umieszczenie jakiejś zawartości z poziomu css. W tym przypadku - pozostawiony pusty - jest wykorzystany do wyświetlenia jakiegoś elementu graficznego*/
     height: 8px;
-
+    /*o takiej wysokości*/
     width: 40px;
-
+    /*i takiej szerkości*/
     background: blue;
-
+    /*oraz takim tle. Aby ten element się wyświetlił musimy zmienić elementowi wyżej display na flex albo block*/
     margin-right: 10px;
 }
 
@@ -518,6 +540,7 @@ input[type="radio"] {
     justify-content: center;
     gap: 10px;
     -webkit-box-reflect: below 1px linear-gradient(transparent 50%, rgba(0, 0, 0, 0.25));
+    /*dodanie odbicia elementu. Własności tej nie obsługuje niestety Mozilla*/
 }
 
 .panele .panel {
@@ -526,23 +549,25 @@ input[type="radio"] {
     height: 350px;
     width: 280px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-
+    /*rzucanie cienia przez element. Pierwszy parametr to przesunięcie poziome (wartość dodatnia przesuwa w prawo, ujemna w lewo). Drugi parametr to przesunięcie pionowe (wartość dodatnia przesuwa w dół, ujemna w górę. Zastosowanie w obu parametrach wartości 0 ma odwzorowywać padanie cienia prostopadle do elementu wg osi z. Trzeci z parametrów to odległość, na jaką cień ma padać. I czwarty parametr to kolor cienia z przezroczystością*/
 }
 
 .panele .paski {
     background: linear-gradient(45deg, #2da2ff 25%, #444 25%, #444 50%,
             #2da2ff 50%, #2da2ff 75%, #444 75%, #444 100%);
-
+    /*tło jako gradient liniowy. W pierszym parametrze podajemy kąt, pod jakim gradient będzie rozmieszczony w elemencie. W kolejnych krokach podajemy jakie kolory i w których miejscach obszaru będą występowały. Podanie tych samych wartości procentowych dla kolorów granicznych powoduje, że przeglądarka nie tworzy płynnego przejścia pomiędzy tymi kolorami, tylko odcina pierwszy w kolorów, zastępując go drugim*/
     background-size: 40px 40px;
-
+    /*ustawienie wielkości tła. W związku z domyślną wartością dla powtarzania tła będzie się ono powtarzało poziomo i pionowo, aż do wypełnienia obszaru, w którym się znajduje*/
     display: flex;
     justify-content: center;
     animation: animateBg 0.5s linear infinite;
+    /*dodanie animacji. Pierwszy parametr to nazwa animacji, która musi być unikalna (bowiem animacji możemy mieć nieskończenie wiele). Nazwa nie powinna posiadać polskich znaków ani spacji. Drugi parametr to czas trwania animacji. Kolejny to jej przyrost - linear oznacza, że animacja coraz bardziej przyspiesza od jej początku do jej końca. Ostatni element to nieskończona ilość odtworzeń animacji, czyli jej zapętlenie*/
     animation-play-state: paused;
-
+    /*Początkowo animacja jest zatrzymana*/
     position: relative;
-
+    /*powoduje ustalenie tego diva jak nadrzędnego dla wszystkich elementów posiadających position:absolute znajdujących się wewnątrz elementu. W przypadku braku tego relative za bazowy element uznawane jest całe okno przeglądarki*/
     filter: grayscale(1);
+    /*dodaje filtr w postaci wyświetlania wszystkich elementów wewnątrz jako czarno-białe*/
     -webkit-filter: grayscale(1);
 }
 
@@ -554,20 +579,26 @@ input[type="radio"] {
 
 .panele .paski:hover {
     animation-play-state: running;
+    /*po najechaniu na element animacja rozpoczyna się*/
     filter: grayscale(0);
+    /*po najechaniu na element usuwane jest wyświetlanie w trybie czarno-białym*/
 }
 
 @keyframes animateBg {
 
+    /*ustawienie klatek kluczowych dla animacji o nazwie wpisanej po keyframes*/
     0% {
+        /*początek animacji - pierwsza klatka*/
         background-position: 0;
     }
 
     100% {
+        /*koniec animacji - ostatnia klatka*/
         background-position: 40px;
     }
 }
 
+/*pomiędzy pierwszą a ostatnią klatką przeglądarka wstawia sobie poszczególne wartości proporcjonalnie*/
 .panele .paski img {
     position: absolute;
     bottom: 0;
@@ -590,11 +621,14 @@ input[type="radio"] {
     text-align: center;
     color: #fff;
     transform: scale(0);
+    /*scale 0 powoduje zmniejszenie elementu do 0%, czyli jego zniknięcie*/
     transition: all 0.6s ease-in-out;
+    /*ease-in-out powoduje, że animacja wykonuje się z łagodnym rozpoczęciem, potem przyspiesza i pod koniec zwalnia z łagodnym zakończeniem*/
 }
 
 .panele .paski:hover p {
     transform: scale(1);
+    /*po najechaniu element wyświetlany jest w swojej pierwotnej wielkości*/
 }
 
 .panele .panel .scan {
@@ -614,6 +648,7 @@ input[type="radio"] {
 }
 
 .panele .panel .scan .odcisk:before {
+    /*nałożenie drugiego obrazu na pierwszy*/
     content: '';
     position: absolute;
     top: 0;
@@ -627,6 +662,7 @@ input[type="radio"] {
 
 @keyframes fprint {
 
+    /*animacja posiada trzy klatki kluczowe. Jej początek i koniec znajdują się w tym samym punkcie (na górze), a środek animacji to dół bloku. Animacja ta jest działaniem na wysokości drugiego tła zadeklarowanego za pomocą before*/
     0%,
     100% {
         height: 0%;
@@ -638,6 +674,7 @@ input[type="radio"] {
 }
 
 .panele .panel .scan .odcisk:after {
+    /*Drugą subklasą wstawiana jest linia symulująca działanie skanera*/
     content: '';
     position: absolute;
     top: 0;
@@ -646,10 +683,14 @@ input[type="radio"] {
     height: 8px;
     background: #69f;
     filter: drop-shadow(0 0 20px #69f) drop-shadow(0 0 60px #69f);
+    /*rzucanie cienia wokół elementu. Parametry to przesunięcie w poziomie, pionie, odległość oraz kolor cienia. Podwójne użycie powoduje z różną odległością cienia powoduje, że na pierszych 20px cień ten jest nałożony podwójnie, przez co jest on lepiej widoczny.*/
     animation: fprint_linia 4s ease-in-out infinite;
 }
 
 @keyframes fprint_linia {
+
+    /*W tej animacji użyte jest przesunięcie elementu wypozycjonowanego absolutnie od jego bazowego położenia przy górnej krewędzi elementu w dół, aż do dolnej krawędzi elementu.*/
+    0%,
     100% {
         top: 0%;
     }
@@ -671,6 +712,7 @@ input[type="radio"] {
 
 @keyframes fprint_tekst {
 
+    /*Miganie tekstu osiągnięte za pomocą widoczności elementu - od całkowitej przezroczystości, do całkowitej widoczności*/
     0%,
     100% {
         opacity: 0;
@@ -686,6 +728,7 @@ input[type="radio"] {
 }
 
 .panele .obrotowy .face {
+    /*wspólna klasa dla obu elementów*/
     position: absolute;
     top: 0;
     left: 0;
@@ -695,6 +738,7 @@ input[type="radio"] {
 }
 
 .panele .obrotowy .face.face1 {
+    /*klasa dla pierwszego elementu, widocznego na początku*/
     background: #69f;
     display: flex;
     justify-content: center;
@@ -702,6 +746,7 @@ input[type="radio"] {
     z-index: 1;
     color: #fff;
     transform-origin: bottom;
+    /*wszelkie transformacje następują względem dolnej krawędzi tego elementu*/
 }
 
 .panele .obrotowy .face.face1 i {
@@ -718,18 +763,21 @@ input[type="radio"] {
 
 .panele .obrotowy:hover .face.face1 {
     transform: translateY(-100%) rotateX(90deg);
+    /*transformacja obejmuje przesunięcie w pionie 0 100% do góry oraz obrócenie elemetu o 90 stopni, przez co staje się on niewidoczny*/
     background: #c00;
 }
 
 .panele .obrotowy .face.face2 {
     padding: 20px;
     transform-origin: top;
+    /*wszelkie transformacje następują względem górnej krewędzi elementu*/
     transform: translateY(100%) rotateX(90deg);
+    /*element początkowo jest przesunięty w dół o 100% i obrócony o 90 stopni przez co staje się niewidoczny*/
 }
 
 .panele .obrotowy:hover .face.face2 {
     transform: translateY(0) rotateX(0deg);
-
+    /*aby element się wyświetlił ustawić należy mu warości początkowe, więc nie będzie ani przesunięty, ani obrócony*/
 }
 
 .stopka {
@@ -785,7 +833,8 @@ input[type="radio"] {
 
 .stopka .footer .linia i {
     font-size: 1.5rem;
-
+    /*margin-right:15px;*/
+    /
 }
 
 .stopka .footer h3 {
@@ -803,6 +852,8 @@ input[type="radio"] {
 .stopka .footer img {
     width: 100px;
     height: auto;
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
     text-align: center;
     margin-bottom: 20px;
 }
@@ -838,8 +889,6 @@ input[type="radio"] {
 .stopka .footer .zapis a:hover {
     background: #fff;
     color: #000;
-    text-align: center;
-    padding: 20px 10px;
 }
 
 .stopka .dolna {
@@ -860,33 +909,45 @@ input[type="radio"] {
 
 .full {
     min-height: calc(100vh - 100px);
+    /*ustawia wysokość dla diva na wysokość ekranu urządzenia pomniejszoną o wysokość nagłówka*/
 }
 
 .zadzwon {
+    /*styl dla elementu zadzwoń*/
     position: fixed;
+    /*przyklejenie w pewnym miejscu okna przeglądarki względem całego elementu body*/
     bottom: 40px;
+    /*40 pikseli od dołu*/
     left: 40px;
+    /*i 40px od lewej*/
     width: 100px;
     height: 100px;
     background: darkgreen;
     border-radius: 50%;
     z-index: 9999;
+    /*wyciągamy na górną warstwę*/
     display: flex;
     justify-content: center;
     align-items: center;
+    /*flex wyśrodkuje elementy wewnątrz, w tym przypadku ikonkę słuchawki*/
     font-size: 2.5rem;
     animation: pulse 2s infinite;
+    /*dodaje animację pulsowania. animacja obracania elementu pochodzi z font awesome*/
 }
 
 @keyframes pulse {
     0% {
         transform: scale(0.95);
+        /*pomniejszenie do 95%*/
         box-shadow: 0 0 0 0 rgba(0, 100, 0, 0.7);
+        /*dodanie cienia z kryciem 70%*/
     }
 
     70% {
         transform: scale(1);
+        /*wielkość oryginalna*/
         box-shadow: 0 0 0 10px rgba(0, 100, 0, 0);
+        /*cień z rozmyciem na 10px i pełną przezroczystością*/
     }
 
     100% {
@@ -900,31 +961,44 @@ input[type="radio"] {
 }
 
 .checkbtn {
+    /*styl dla etykiety checkboxa*/
     font-size: 2rem;
     margin-right: 20px;
     margin-left: 10px;
     cursor: pointer;
+    /*po najechaniu zamienia strzałkę kursora na łapkę*/
     display: none;
+    /*ukrywamy element*/
     order: 5;
+    /*przesuwamy element na sam koniec*/
 }
 
 #check {
+    /*styl na pola checkboxa*/
     display: none;
 }
 
 @media(max-width:940px) {
 
+    /*podane wewnątrz media parametry zostaną użyte dla ekranów z rodzielczością do 940px włącznie. tutaj umieszczamy style dla poszczególnych elementów, odnośnie ich wyglądu na urządzeniach mobilnych*/
     .header .menu {
+        /*menu mobilne*/
         width: 100%;
+        /*pełna szerokość*/
         position: absolute;
+        /*pozycjonowane względem elementu header*/
         top: 100px;
+        /*przesunięcie od góry o wysokość nagłówka*/
         left: -100%;
+        /*przesunięcie w którąś stronę o pełny rozmiar ekranu powoduje zniknięcie menu z okna przeglądarki*/
         height: calc(100vh - 100px);
+        /*wysokość menu to wysokość okna przeglądarki pomniejszona o wysokość headera*/
         transition: all 0.5s;
     }
 
     .header .menu ul {
         flex-direction: column;
+        /*menu z wyświetlania we wierszu zmieniamy na kolumnę*/
         background: #222;
     }
 
@@ -938,10 +1012,13 @@ input[type="radio"] {
 
     .checkbtn {
         display: block;
+        /*powoduje wyświetlenie się ikonki hamburger menu*/
     }
 
     #check:checked~.menu {
+        /*jeżeli checkbox czy etykieta przypisana do tego checkboxa zostaną kliknięte (checked), wówczas wszystkie elementy mające klasę .menu znajdujące się w tym samym divie co checkbox zostanę przesunięte do pozycji początkowej*/
         left: 0;
+        /*czyli przyciągnięte do lewego marginesu okna przeglądarki*/
     }
 
     .opis,

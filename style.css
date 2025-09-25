@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-/* RESET – bez rzeczy, które psuły layout globalnie */
 * {
     margin: 0;
     padding: 0;
@@ -10,16 +9,10 @@
     -webkit-scroll-behavior: smooth;
 }
 
-/* Obrazki responsywnie (bezpieczne) */
-img,
-video {
-    max-width: 100%;
-    height: auto;
-}
-
 body {
+
     background: #fff;
-    margin: 0 auto;
+    position: relative;
 }
 
 .header {
@@ -30,6 +23,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 99999999;
+
 }
 
 .header .logo1 {
@@ -40,7 +34,7 @@ body {
     justify-content: center;
 }
 
-.header .logo1 img {
+.header .logo1 {
     height: 70px;
     width: auto;
 }
@@ -96,20 +90,6 @@ body {
     gap: 10px;
 }
 
-/* Poprawione 'screen' + spacje w media queries */
-@media screen and (min-width: 768px) and (max-width: 1199px) {
-    .header {
-        /* Uwaga: to działa w grid, ale header ma flex – zostawiam bez zmian dla kompatybilności */
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media screen and (min-width: 1200px) {
-    .header {
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    }
-}
-
 .header .socialki a,
 .header .socialki a:visited {
     color: #000;
@@ -135,7 +115,7 @@ body {
 }
 
 .baner .kratka {
-    margin-right: 5%;
+    margin-right: 10%;
     width: 400px;
     min-height: 300px;
     background: rgba(0, 0, 0, 0.5);
@@ -172,25 +152,22 @@ body {
 }
 
 .opis {
-    background: #cca;
+    background: #222;
     display: flex;
-    align-items: center;
     scroll-margin-top: 100px;
-    gap: 20px;
-    padding: 20px;
 }
 
 .opis .zdjecie {
-    flex: 1;
+    flex: 0 0 35%;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
 .opis .zdjecie img {
-    width: 400px;
-    height: 400px;
-    background: #caa;
+    width: 300px;
+    height: 300px;
+    background: #ddd;
     border-radius: 50%;
     transition: 0.7s;
 }
@@ -201,18 +178,145 @@ body {
 }
 
 .opis .opis {
-    flex: 2;
+    width: 100%;
+    height: 100%;
+    flex: 0 4 65%;
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
-.paralaxa {
+.opis .opis .tekst {
+    font-size: 3rem;
+    font-weight: 300;
+}
+
+.p1 {
+    text-shadow: 2px 0px 2px yellow,
+        -2px 0 2px yellow,
+        0 2px 2px yellow,
+        0 -2px 2px yellow;
+}
+
+.p2 {
+    text-shadow: 2px 0px 2px yellow,
+        -2px 0 2px yellow,
+        0 2px 2px yellow,
+        0 -2px 2px yellow,
+        2px 2px 2px yellow,
+        -2px 2px 2px yellow,
+        2px -2px 2px yellow,
+        -2px -2px 2px yellow;
+}
+
+.p3 {
+    -webkit-text-fill-color: #222;
+    -webkit-text-stroke: 2px;
+    -webkit-text-stroke-color: yellow;
+}
+
+.p4 {
+    -webkit-text-fill-color: #222;
+    -webkit-text-stroke: 2px;
+    -webkit-text-stroke-color: yellow;
+}
+
+
+.p5 {
+    -webkit-text-fill-color: #222;
+    -webkit-text-stroke: 2px;
+    -webkit-text-stroke-color: yellow;
+}
+
+.p6 {
+    -webkit-text-fill-color: #222;
+    -webkit-text-stroke: 2px;
+    -webkit-text-stroke-color: yellow;
+}
+
+.p7 {
+    -webkit-text-fill-color: #222;
+    -webkit-text-stroke: 2px;
+    -webkit-text-stroke-color: yellow;
+}
+
+.galeria {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-margin-top: 100px;
+}
+
+.galeria .siatka {
+    padding: 40px;
+    position: relative;
+    display: grid;
+    width: 900px;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 200px 200px 200px 200px;
+    grid-template-areas: "img1 img3 img5"
+        "img1 img3 img6"
+        "img2 img3 img6"
+        "img2 img4 img4";
+}
+
+.galeria {
+    background: #c22;
+}
+
+.galeria .siatka .item {
+    background: #222;
+    position: relative;
+    border: 1px solid #ccc;
+}
+
+.galeria .siatka img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1);
+    opacity: 0.5;
+}
+
+.galeria .siatka img:hover {
+    filter: grayscale(0);
+    opacity: 1;
+}
+
+.galeria .siatka .img1 {
+    grid-area: img1;
+}
+
+.galeria .siatka .img2 {
+    grid-area: img2;
+}
+
+.galeria .siatka .img3 {
+    grid-area: img3;
+}
+
+.galeria .siatka .img4 {
+    grid-area: img4;
+}
+
+.galeria .siatka .img5 {
+    grid-area: img5;
+}
+
+.galeria .siatka .img6 {
+    grid-area: img6;
+}
+
+.usługi {
     background: url(../img/bg2.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    /*powoduje przyklejenie obrazu tła do okna przeglądarki*/
     background-attachment: fixed;
     display: flex;
     align-items: center;
@@ -220,7 +324,7 @@ body {
     scroll-margin-top: 100px;
 }
 
-.paralaxa .kratka {
+.usługi .kratka {
     margin-left: 10%;
     width: 400px;
     min-height: 300px;
@@ -231,17 +335,18 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    /*opacity: 0.7;*/
 }
 
-.paralaxa .kratka h1 {
+.usługi .kratka h1 {
     font-weight: 200;
 }
 
-.paralaxa .kratka p {
+.usługi .kratka p {
     text-align: center;
 }
 
-.paralaxa .kratka a {
+.usługi .kratka a {
     color: #fff;
     text-decoration: none;
     text-transform: uppercase;
@@ -252,72 +357,9 @@ body {
     transition: 0.7s;
 }
 
-.paralaxa .kratka a:hover {
+.usługi .kratka a:hover {
     background: #fff;
     color: #000;
-}
-
-/* --- MODAL --- */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    align-items: center;
-    justify-content: center;
-}
-
-.modal-content {
-    background: rgba(0, 0, 0, 0.85);
-    color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    max-width: 500px;
-    width: 90%;
-    box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
-    position: relative;
-    animation: fadeIn 0.3s ease-in-out;
-}
-
-.modal-content h2 {
-    font-weight: 200;
-    margin-top: 0;
-    text-align: center;
-}
-
-.modal-content p {
-    text-align: center;
-    line-height: 1.6;
-}
-
-.close {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 28px;
-    color: #fff;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.close:hover {
-    color: #f00;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
 }
 
 .kontakt {
@@ -361,17 +403,13 @@ body {
 }
 
 .kontakt .formularz form input[type="text"],
-.kontakt .formularz form input[type="tel"]
-
-/*definicja tylko dla pól input typu text oraz tel*/
-    {
+.kontakt .formularz form input[type="tel"] {
     width: 100%;
     height: 48px;
     padding: 5px 10px;
 }
 
 .kontakt .formularz form textarea {
-    /*definicja dla pola obszaru tekstowego*/
     width: 100%;
     height: 250px;
     resize: vertical;
@@ -401,21 +439,14 @@ body {
 #nie,
 #nie_wiem {
     accent-color: green;
-    /*zmiana koloru po zaznaczeniu dla pól radio według ich id*/
 }
 
-input[type="radio"]
-
-/*zwiększenie rozmaru pola radio. Podane wartości wysokości i szerokości muszą być takie same, gdyż jest to koło*/
-    {
+input[type="radio"] {
     height: 30px;
     width: 30px;
 }
 
-.kontakt .formularz form input[type="submit"]
-
-/*parametry dla przycisku wysyłającego formularz z użyciem pola input typu submit*/
-    {
+.kontakt .formularz form input[type="submit"] {
     width: 50%;
     background: #000;
     color: #fff;
@@ -424,10 +455,7 @@ input[type="radio"]
 }
 
 .kontakt .formularz form input:focus,
-.kontakt .formularz form textarea:focus
-
-/*focus to status dla aktywnego (zaznaczonego) pola formularza*/
-    {
+.kontakt .formularz form textarea:focus {
     background: #444;
     color: #fff;
 }
@@ -437,9 +465,9 @@ input[type="radio"]
 }
 
 .panele {
+    background: #69f;
     display: flex;
     scroll-margin-top: 100px;
-    background: #acbc;
     gap: 10px;
     align-items: center;
     justify-content: center;
@@ -460,9 +488,13 @@ input[type="radio"]
 
 .panele .tytul:before {
     content: '';
+
     height: 8px;
+
     width: 40px;
+
     background: blue;
+
     margin-right: 10px;
 }
 
@@ -479,25 +511,31 @@ input[type="radio"]
     align-items: center;
     justify-content: center;
     gap: 10px;
+    -webkit-box-reflect: below 1px linear-gradient(transparent 50%, rgba(0, 0, 0, 0.25));
 }
 
 .panele .panel {
     flex: 1;
-    background: #bbb;
+    background: #fff;
     height: 350px;
     width: 280px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
 }
 
 .panele .paski {
     background: linear-gradient(45deg, #2da2ff 25%, #444 25%, #444 50%,
             #2da2ff 50%, #2da2ff 75%, #444 75%, #444 100%);
+
     background-size: 40px 40px;
+
     display: flex;
     justify-content: center;
     animation: animateBg 0.5s linear infinite;
     animation-play-state: paused;
+
     position: relative;
+
     filter: grayscale(1);
     -webkit-filter: grayscale(1);
 }
@@ -514,6 +552,7 @@ input[type="radio"]
 }
 
 @keyframes animateBg {
+
     0% {
         background-position: 0;
     }
@@ -605,8 +644,6 @@ input[type="radio"]
 }
 
 @keyframes fprint_linia {
-
-    0%,
     100% {
         top: 0%;
     }
@@ -686,6 +723,7 @@ input[type="radio"]
 
 .panele .obrotowy:hover .face.face2 {
     transform: translateY(0) rotateX(0deg);
+
 }
 
 .stopka {
@@ -695,7 +733,7 @@ input[type="radio"]
     padding: 10px 25px;
     justify-content: space-between;
     align-items: center;
-    flex-direction: row;
+    flex-direction: column;
     color: #fff;
     padding: 40px;
 }
@@ -720,12 +758,11 @@ input[type="radio"]
 .stopka .footer {
     width: 100%;
     height: 100%;
-    flex-direction: row;
+    flex: 1;
     display: flex;
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
-
 }
 
 .stopka .footer .linia {
@@ -742,6 +779,7 @@ input[type="radio"]
 
 .stopka .footer .linia i {
     font-size: 1.5rem;
+
 }
 
 .stopka .footer h3 {
@@ -794,6 +832,8 @@ input[type="radio"]
 .stopka .footer .zapis a:hover {
     background: #fff;
     color: #000;
+    text-align: center;
+    padding: 20px 10px;
 }
 
 .stopka .dolna {
@@ -840,7 +880,7 @@ input[type="radio"]
 
     70% {
         transform: scale(1);
-        box-shadow: 0 0 0 10px rgba(0, 100, 0, 0);/
+        box-shadow: 0 0 0 10px rgba(0, 100, 0, 0);
     }
 
     100% {
@@ -867,6 +907,7 @@ input[type="radio"]
 }
 
 @media(max-width:940px) {
+
     .header .menu {
         width: 100%;
         position: absolute;

@@ -1,67 +1,86 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+:root {
+    --czerwony: #c22;
+    --czerwony-ciemny: #a00;
+    --ciemny: #222;
+    --niebieski: #69f;
+    --wysokosc-menu: 90px;
+    --przejscie: 0.35s ease;
+}
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+}
+
+
+html {
     scroll-behavior: smooth;
-    -webkit-scroll-behavior: smooth;
-    /*powoduje dodanie płynnego przewijania strony po kliknięciu linku z menu. przedostek -webkit dla przeglądarek chrome i safari*/
+    scroll-padding-top: var(--wysokosc-menu);
 }
 
 body {
     background: #fff;
-    /*max-width: 1180px;
-    margin: 0 auto;*/
     position: relative;
-    /*ma na celu utworzenie punktu odniesienia dla elementów pozycjonowanych absolutnie względem całego body - w tym przypadku zielony guzik do dzwonienia*/
+    color: #111;
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.full {
+    min-height: calc(100vh - var(--wysokosc-menu));
 }
 
 .header {
-    background: #ccc;
-    height: 100px;
+    background: #fff;
+    height: var(--wysokosc-menu);
     display: flex;
-    /*wyświetla cały dokument jako flex, ale wyświetla się on we wierszu*/
     align-items: center;
-    /*align-items wyrównuje element poprzecznie do kierunku, w którym wyświetla się flex (domyślnie wiersz)*/
     position: sticky;
     top: 0;
-    z-index: 99999999;
+    z-index: 9999;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
 }
 
-.header .logo {
-    flex: 1;
+.header .logo1 {
+    flex: 0 0 150px;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.header .logo img {
-    height: 80px;
-    width: auto;
+.header .logo1 img {
+    max-width: 120px;
+    max-height: 70px;
+    object-fit: contain;
 }
 
 .header .menu {
     flex: 8;
-    /*użycie wartości 8 powoduje, że element ten będzie 8 razy szerszy niż bazowy, ustawiony dla header .logo*/
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .header .menu ul {
     display: flex;
-    list-style-type: none;
-    align-items: center;
+    list-style: none;
+    align-items: stretch;
     justify-content: space-around;
     width: 100%;
     height: 100%;
 }
 
-.header .menu ul a {
+.header .menu ul li {
+    flex: 1;
+}
+
+.header .menu ul li a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -69,239 +88,217 @@ body {
     height: 100%;
     color: #000;
     text-decoration: none;
-    transition: 0.7s;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: background-color var(--przejscie), color var(--przejscie);
 }
 
-.header .menu ul a:hover {
+.header .menu ul li a:hover,
+.header .menu ul li a:focus-visible {
     background: #c00;
     color: #fff;
 }
 
-.header .menu ul a li {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-}
-
 .header .socialki {
     flex: 1;
-    /*ten element będzie tak samo szeroki jak header .logo*/
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 900;
-    /*zmienia grubość czcionki zgodnie z parametrami pochodzącymi z czcionki*/
     gap: 10px;
-    /*ustawia odstęp pomiędzy kolejnymi elementami flexa*/
+    padding: 0 10px;
 }
 
 .header .socialki a,
 .header .socialki a:visited {
     color: #000;
     font-size: 2rem;
-    /*użycie jednostki rem powoduje, że czcionka będzie się odnosiła do czcionki bazowej dla systemu. Jeżeli używana była by skala em, wówczas odniesienie było by do poprzednio użytej wielkości czcionki. czyli jeżeli wcześniej zadeklarowalibyśmy jakiemuś elementowi font-size na 5em, a następnie temu na 3em, to docelowo czcionka by była najpierw powiększona x5, a potem jeszcze x3*/
+    transition: color var(--przejscie), transform var(--przejscie);
+}
+
+.header .socialki a:hover {
+    transform: translateY(-2px);
 }
 
 .header .socialki a:hover i.fa-square-facebook {
-    color: blue;
+    color: #1877f2;
 }
 
 .header .socialki a:hover i.fa-square-youtube {
     color: red;
 }
 
+.checkbtn {
+    font-size: 1.8rem;
+    margin: 0 20px 0 10px;
+    cursor: pointer;
+    display: none;
+    order: 5;
+    line-height: 1;
+}
+
+#check {
+    display: none;
+}
+
+
 .baner {
-    background: url(../img/bg1.jpg);
-    /*podana ścieżka do pliku uwzględnia, że plik css, w którym znajduje się definicja tła znajduje się w innym folderze, niż follder główny. Jeżeli użyjemy linku img/1.jpg wówczas folder img będzie szukany wewnątrz folderu css. Użycie ../ powoduje przejście katalog wyżej*/
-    background-repeat: no-repeat;
-    /*usuwa powtarzanie tła, ktore domyślnie jest ustawione na powtarzanie poziomo i pionowo*/
-    background-position: center;
-    /*wyśrodkowuje obrazek tła. pozycja ma dwa parametry - poziomy i pionowy - i pozwala ustawić punkt zaczepienia tła w bloku, w którym obraz tła występuje. Bazowo jest to górny prawy róg. Punktami odniesienia są wszystkie rogi obrazu, połowy boków oraz środek*/
-    background-size: cover;
-    /*powoduje rozciągniecie obrazu do dłuższego z boków bloku, wewnątrz którego tło się znajduje*/
+    background: url(../img/bg1.jpg) no-repeat center / cover;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    /*przesuwa zawartość bloku do końca flexa*/
-
+    padding: 40px 0;
 }
 
-.baner .kratka {
-    margin-right: 10%;
-    width: 400px;
+.kratka {
+    width: min(420px, 90%);
     min-height: 300px;
-    background: rgba(0, 0, 0, 0.5);
-    /*dodatkowy parametr a w kolorze odpowiada za przezroczystość tła. wartości od 0 do 1 odpowiadają 0% do 100%*/
+    background: rgba(0, 0, 0, 0.55);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
     color: #fff;
-    padding: 20px;
+    padding: 30px 25px;
+    border-radius: 6px;
     display: flex;
     flex-direction: column;
-    /*obraca kierunek flexa z wiersza na kolumnę*/
     justify-content: space-between;
-    /*w związku z obróceniem kierunku flexa na pionowy w flex-direction justify-content działa dalej zgodnie z kierunkiem flexa, a on teraz nie jest poziomy, tylko pionowy*/
     align-items: center;
-    /*opacity: 0.7;*/
-}
-
-.baner .kratka h1 {
-    font-weight: 200;
-}
-
-.baner .kratka p {
+    gap: 20px;
     text-align: center;
 }
 
-.baner .kratka a {
+.kratka h1 {
+    font-weight: 200;
+    letter-spacing: 2px;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+}
+
+.kratka a {
     color: #fff;
     text-decoration: none;
     text-transform: uppercase;
-    /*zmienia cały tekst na duże litery*/
     border: 1px solid #fff;
     padding: 10px 30px;
     width: 100%;
     text-align: center;
-    transition: 0.7s;
+    border-radius: 4px;
+    transition: background-color var(--przejscie), color var(--przejscie);
 }
 
-.baner .kratka a:hover {
+.kratka a:hover {
     background: #fff;
     color: #000;
 }
 
+.baner .kratka {
+    margin-right: 10%;
+}
+
 .opis {
-    background: #222;
+    background: var(--ciemny);
     display: flex;
-    scroll-margin-top: 100px;
-    /*ustawia margines początkowy sekcji uwzględniając wysokość sekcji header, aby zawartość sekcji nie chowała się pod nagłówkiem*/
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    padding: 60px 8%;
 }
 
 .opis .zdjecie {
-    flex: 1;
+    flex: 0 0 40%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .opis .zdjecie img {
-    width: 300px;
-    height: 300px;
-    /*filter:drop-shadow(10px 10px 18px #000);*/
-    background: #ddd;
+    width: 320px;
+    height: 320px;
+    max-width: 100%;
+    object-fit: cover;
+    border: 5px solid var(--czerwony);
     border-radius: 50%;
-    transition: 0.7s;
+    background: #ddd;
+    transition: transform 0.5s ease, border-radius 0.5s ease;
 }
 
 .opis .zdjecie img:hover {
     border-radius: 50% 5%;
-    transform: rotate(35deg) scale(1.2);
+    transform: rotate(10deg) scale(1.05);
 }
 
-.opis .opis {
-    width: 100%;
-    height: 100%;
-    flex: 2;
+.opis .opis-tekst {
+    flex: 0 0 50%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    text-align: center;
+    gap: 10px;
 }
 
-.opis .opis .tekst {
-    font-size: 6rem;
-    font-weight: 900;
+.opis-tekst .tekst {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 500;
+    line-height: 1.2;
+    color: #fff;
+    overflow-wrap: anywhere;
 }
 
-.p1 {
-    /*dodanie cienia do tekstu w czterech głównych kierunkach*/
-    text-shadow: 2px 0px 2px yellow,
-        -2px 0 2px yellow,
-        0 2px 2px yellow,
-        0 -2px 2px yellow;
+.opis-tekst .p2,
+.opis-tekst .p4 {
+    color: var(--czerwony);
 }
 
-.p2 {
-    /*dodanie cieniu w czterech głownych kierunkach oraz dodatkowo na rogach*/
-    text-shadow: 2px 0px 2px yellow,
-        -2px 0 2px yellow,
-        0 2px 2px yellow,
-        0 -2px 2px yellow,
-        2px 2px 2px yellow,
-        -2px 2px 2px yellow,
-        2px -2px 2px yellow,
-        -2px -2px 2px yellow;
-}
-
-.p3 {
-    /*rozwiązanie najlepsze aby dodać obrys do tekstu*/
-    -webkit-text-fill-color: #222;
-    /*wypełnienie tekstu kolorem*/
-    -webkit-text-stroke: 2px;
-    /*dodanie grubości obrysu*/
-    -webkit-text-stroke-color: yellow;
-    /*Dodanie koloru obrysu*/
-}
 
 .galeria {
+    background: var(--czerwony);
     display: flex;
     justify-content: center;
     align-items: center;
-    scroll-margin-top: 100px;
 }
 
 .galeria .siatka {
     padding: 40px;
-    position: relative;
     display: grid;
-    /*tworzy blok oparty na siatce*/
-    width: 900px;
-    /*chcemy trzy kolumny, więc określamy szerokość siatki na liczbę podzielną przez 3*/
-    grid-gap: 10px;
-    /*ustawia odległości pomiędzy elementami zawartymi wewnątrz siatki*/
-    grid-template-columns: 1fr 1fr 1fr;
-    /*definiuje szerokość kolumn. Trzy kolumny o tej samej szerokości - jednostka fr*/
-    grid-template-rows: 200px 200px 200px 200px;
-    /*ustawia wysokość poszczególnych wierszy*/
-    grid-template-areas: "img1 img3 img5"
+    width: 100%;
+    max-width: 900px;
+    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 200px);
+    grid-template-areas:
+        "img1 img3 img5"
         "img1 img3 img6"
         "img2 img3 img6"
         "img2 img4 img4";
-    /*tutaj definiujemy nazwy obszarów, których będzie używała nasza siatka. Same obszary są przypisane do poszczególnych klas przypisanych unikalnie obrazkom*/
 }
 
 .galeria .siatka .item {
+    background: var(--ciemny);
     position: relative;
-    /*względem tego elementu będą pozycjonowane obrazki umieszczone wewnątrz siatki*/
     border: 1px solid #ccc;
+    overflow: hidden;
+    border-radius: 4px;
 }
 
 .galeria .siatka img {
     position: absolute;
-    /*definiuje pozycjonowanie elementu względem pierwszego elementu mającego wartość relative, znajdującego się w klasach rodzicach (w naszym przypadku będzie to klasa item*/
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /*powoduje wypełnienie całego obszaru diva*/
     filter: grayscale(1);
     opacity: 0.5;
+    transition: filter 0.5s ease, opacity 0.5s ease, transform 0.6s ease;
 }
 
 .galeria .siatka img:hover {
     filter: grayscale(0);
     opacity: 1;
+    transform: scale(1.05);
 }
 
-/*.galeria:hover .siatka img:not(:hover){
-    filter: grayscale(1);
-    opacity: 0.5;
-}*/
 .galeria .siatka .img1 {
     grid-area: img1;
-    /*definiuje nazwę obszaru grida dla elementu zawierającego tę klasę*/
 }
 
 .galeria .siatka .img2 {
@@ -324,77 +321,115 @@ body {
     grid-area: img6;
 }
 
-.paralaxa {
-    background: url(../img/bg2.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    /*powoduje pokrycie obrazem obszaru całego diva, w którym ten obraz będzie umieszczony jako tło*/
+.uslugi {
+    background: url(../img/bg2.jpg) no-repeat center / cover;
     background-attachment: fixed;
-    /*powoduje przyklejenie obrazu tła do okna przeglądarki*/
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    scroll-margin-top: 100px;
+    padding: 40px 0;
 }
 
-.paralaxa .kratka {
+.uslugi .kratka {
     margin-left: 10%;
-    width: 400px;
-    min-height: 300px;
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    padding: 20px;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.65);
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    /*opacity: 0.7;*/
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--przejscie), visibility var(--przejscie);
 }
 
-.paralaxa .kratka h1 {
-    font-weight: 200;
+.modal.open {
+    opacity: 1;
+    visibility: visible;
 }
 
-.paralaxa .kratka p {
-    text-align: center;
+.modal-content {
+    position: relative;
+    background: #fff;
+    width: min(480px, 100%);
+    padding: 40px 30px 30px;
+    border-radius: 8px;
+    border-top: 6px solid var(--czerwony);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    transform: translateY(20px) scale(0.97);
+    transition: transform var(--przejscie);
 }
 
-.paralaxa .kratka a {
+.modal.open .modal-content {
+    transform: translateY(0) scale(1);
+}
+
+.modal-content h2 {
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.modal-content p {
+    margin-bottom: 24px;
+}
+
+.modal-content .close {
+    position: absolute;
+    top: 8px;
+    right: 14px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #555;
+    transition: color var(--przejscie), transform var(--przejscie);
+}
+
+.modal-content .close:hover {
+    color: var(--czerwony);
+    transform: rotate(90deg);
+}
+
+.modal-btn {
+    display: inline-block;
+    background: #000;
     color: #fff;
     text-decoration: none;
-    text-transform: uppercase;
-    border: 1px solid #fff;
-    padding: 10px 30px;
-    width: 100%;
-    text-align: center;
-    transition: 0.7s;
+    padding: 10px 26px;
+    border-radius: 4px;
+    transition: background-color var(--przejscie);
 }
 
-.paralaxa .kratka a:hover {
-    background: #fff;
-    color: #000;
+.modal-btn:hover {
+    background: var(--czerwony);
 }
+
 
 .kontakt {
     background: #eee;
     display: flex;
-    scroll-margin-top: 100px;
 }
 
 .kontakt .mapa {
     flex: 1;
     display: flex;
-    align-items: center;
-    justify-content: center;
     padding: 20px;
 }
 
 .kontakt .mapa iframe {
     width: 100%;
     height: 100%;
+    min-height: 350px;
+    border: 0;
     background: #fff;
     padding: 10px;
+    border-radius: 6px;
 }
 
 .kontakt .formularz {
@@ -404,34 +439,58 @@ body {
     align-items: center;
     flex-direction: column;
     padding: 30px;
-    width: 100%;
+    min-width: 0;
+}
+
+.kontakt .formularz h3 {
+    font-size: 1.6rem;
+    font-weight: 600;
 }
 
 .kontakt .formularz form {
-    margin-top: 30px;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     width: 100%;
-    align-items: center;
     gap: 15px;
 }
 
 .kontakt .formularz form input[type="text"],
-.kontakt .formularz form input[type="tel"]
-
-/*definicja tylko dla pól input typu text oraz tel*/
-    {
+.kontakt .formularz form input[type="tel"],
+.kontakt .formularz form input[type="email"],
+.kontakt .formularz form textarea {
     width: 100%;
+    min-width: 0;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #fff;
+    transition: background-color var(--przejscie), color var(--przejscie), border-color var(--przejscie);
+}
+
+.kontakt .formularz form input[type="text"],
+.kontakt .formularz form input[type="tel"],
+.kontakt .formularz form input[type="email"] {
     height: 48px;
-    padding: 5px 10px;
 }
 
 .kontakt .formularz form textarea {
-    /*definicja dla pola obszaru tekstowego*/
-    width: 100%;
-    height: 250px;
+    height: 220px;
     resize: vertical;
-    padding: 5px 10px;
+}
+
+.kontakt .formularz form input:focus,
+.kontakt .formularz form textarea:focus {
+    outline: none;
+    background: #444;
+    color: #fff;
+    border-color: #444;
+}
+
+.kontakt .formularz form .blad {
+    border-color: var(--czerwony) !important;
+    box-shadow: 0 0 0 2px rgba(204, 34, 34, 0.2);
 }
 
 .kontakt .formularz form .wiersz {
@@ -444,61 +503,77 @@ body {
     background: #fff;
     width: 100%;
     display: flex;
-    padding: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 15px 20px 20px;
     justify-content: space-around;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.kontakt .formularz form fieldset legend {
+    padding: 0 6px;
 }
 
 .kontakt .formularz form fieldset .opcja {
     display: flex;
-    gap: 15px;
+    align-items: center;
+    gap: 10px;
 }
 
-#tak,
-#nie,
-#nie_wiem {
+input[type="radio"] {
+    height: 24px;
+    width: 24px;
     accent-color: green;
-    /*zmiana koloru po zaznaczeniu dla pól radio według ich id*/
 }
 
-input[type="radio"]
-
-/*zwiększenie rozmaru pola radio. Podane wartości wysokości i szerokości muszą być takie same, gdyż jest to koło*/
-    {
-    height: 30px;
-    width: 30px;
-}
-
-.kontakt .formularz form input[type="submit"]
-
-/*parametry dla przycisku wysyłającego formularz z użyciem pola input typu submit*/
-    {
+.kontakt .formularz form input[type="submit"] {
     width: 50%;
     background: #000;
     color: #fff;
-    padding: 8px 10px;
+    padding: 12px 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
     align-self: flex-end;
-}
-
-.kontakt .formularz form input:focus,
-.kontakt .formularz form textarea:focus
-
-/*focus to status dla aktywnego (zaznaczonego) pola formularza*/
-    {
-    background: #444;
-    color: #fff;
+    transition: background-color var(--przejscie), transform var(--przejscie);
 }
 
 .kontakt .formularz form input[type="submit"]:hover {
     background: blue;
 }
 
+.kontakt .formularz form input[type="submit"]:active {
+    transform: scale(0.98);
+}
+
+.kontakt .formularz form input[type="submit"]:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.komunikat {
+    min-height: 1.5em;
+    font-weight: 500;
+}
+
+.komunikat.ok {
+    color: #137a2a;
+}
+
+.komunikat.err {
+    color: var(--czerwony);
+}
+
 .panele {
+    background: var(--niebieski);
     display: flex;
-    scroll-margin-top: 100px;
     gap: 10px;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding: 60px 20px;
 }
 
 .panele .tytul {
@@ -507,68 +582,62 @@ input[type="radio"]
     font-size: 1.25rem;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .panele .tytul span {
     color: blue;
 }
 
-/*subklasy before i after pozwalają na umieszczenie dodatkowych elementów przed i za elementem, do którego są przypisane*/
-.panele .tytul:before {
+.panele .tytul::before,
+.panele .tytul::after {
     content: '';
-    /*pozwala na umieszczenie jakiejś zawartości z poziomu css. W tym przypadku - pozostawiony pusty - jest wykorzystany do wyświetlenia jakiegoś elementu graficznego*/
     height: 8px;
-    /*o takiej wysokości*/
     width: 40px;
-    /*i takiej szerkości*/
+}
+
+.panele .tytul::before {
     background: blue;
-    /*oraz takim tle. Aby ten element się wyświetlił musimy zmienić elementowi wyżej display na flex albo block*/
     margin-right: 10px;
 }
 
-.panele .tytul:after {
-    content: '';
-    height: 8px;
-    width: 40px;
-    background: black;
+.panele .tytul::after {
+    background: #000;
     margin-left: 10px;
 }
 
 .panele .wiersz {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 20px;
+    width: 100%;
+    max-width: 1240px;
     -webkit-box-reflect: below 1px linear-gradient(transparent 50%, rgba(0, 0, 0, 0.25));
-    /*dodanie odbicia elementu. Własności tej nie obsługuje niestety Mozilla*/
 }
 
 .panele .panel {
-    flex: 1;
+    flex: 0 0 280px;
     background: #fff;
     height: 350px;
     width: 280px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    /*rzucanie cienia przez element. Pierwszy parametr to przesunięcie poziome (wartość dodatnia przesuwa w prawo, ujemna w lewo). Drugi parametr to przesunięcie pionowe (wartość dodatnia przesuwa w dół, ujemna w górę. Zastosowanie w obu parametrach wartości 0 ma odwzorowywać padanie cienia prostopadle do elementu wg osi z. Trzeci z parametrów to odległość, na jaką cień ma padać. I czwarty parametr to kolor cienia z przezroczystością*/
+    overflow: hidden;
 }
 
 .panele .paski {
     background: linear-gradient(45deg, #2da2ff 25%, #444 25%, #444 50%,
             #2da2ff 50%, #2da2ff 75%, #444 75%, #444 100%);
-    /*tło jako gradient liniowy. W pierszym parametrze podajemy kąt, pod jakim gradient będzie rozmieszczony w elemencie. W kolejnych krokach podajemy jakie kolory i w których miejscach obszaru będą występowały. Podanie tych samych wartości procentowych dla kolorów granicznych powoduje, że przeglądarka nie tworzy płynnego przejścia pomiędzy tymi kolorami, tylko odcina pierwszy w kolorów, zastępując go drugim*/
     background-size: 40px 40px;
-    /*ustawienie wielkości tła. W związku z domyślną wartością dla powtarzania tła będzie się ono powtarzało poziomo i pionowo, aż do wypełnienia obszaru, w którym się znajduje*/
     display: flex;
     justify-content: center;
     animation: animateBg 0.5s linear infinite;
-    /*dodanie animacji. Pierwszy parametr to nazwa animacji, która musi być unikalna (bowiem animacji możemy mieć nieskończenie wiele). Nazwa nie powinna posiadać polskich znaków ani spacji. Drugi parametr to czas trwania animacji. Kolejny to jej przyrost - linear oznacza, że animacja coraz bardziej przyspiesza od jej początku do jej końca. Ostatni element to nieskończona ilość odtworzeń animacji, czyli jej zapętlenie*/
     animation-play-state: paused;
-    /*Początkowo animacja jest zatrzymana*/
     position: relative;
-    /*powoduje ustalenie tego diva jak nadrzędnego dla wszystkich elementów posiadających position:absolute znajdujących się wewnątrz elementu. W przypadku braku tego relative za bazowy element uznawane jest całe okno przeglądarki*/
     filter: grayscale(1);
-    /*dodaje filtr w postaci wyświetlania wszystkich elementów wewnątrz jako czarno-białe*/
-    -webkit-filter: grayscale(1);
+    transition: filter 0.5s ease;
 }
 
 .panele .paski:nth-child(2) {
@@ -579,41 +648,36 @@ input[type="radio"]
 
 .panele .paski:hover {
     animation-play-state: running;
-    /*po najechaniu na element animacja rozpoczyna się*/
     filter: grayscale(0);
-    /*po najechaniu na element usuwane jest wyświetlanie w trybie czarno-białym*/
 }
 
 @keyframes animateBg {
-
-    /*ustawienie klatek kluczowych dla animacji o nazwie wpisanej po keyframes*/
     0% {
-        /*początek animacji - pierwsza klatka*/
         background-position: 0;
     }
 
     100% {
-        /*koniec animacji - ostatnia klatka*/
         background-position: 40px;
     }
 }
 
-/*pomiędzy pierwszą a ostatnią klatką przeglądarka wstawia sobie poszczególne wartości proporcjonalnie*/
 .panele .paski img {
     position: absolute;
     bottom: 0;
     height: 90%;
-    transition: height 0.5s;
+    width: 100%;
+    object-fit: cover;
+    transition: height 0.5s ease;
 }
 
-.panele .paski img:hover {
-    height: 110%;
+.panele .paski:hover img {
+    height: 100%;
 }
 
 .panele .paski p {
-    font-size: 3rem;
+    font-size: 2.2rem;
     text-transform: uppercase;
-    z-index: 999;
+    z-index: 2;
     position: absolute;
     bottom: 5%;
     background: rgba(0, 0, 0, 0.6);
@@ -621,48 +685,44 @@ input[type="radio"]
     text-align: center;
     color: #fff;
     transform: scale(0);
-    /*scale 0 powoduje zmniejszenie elementu do 0%, czyli jego zniknięcie*/
-    transition: all 0.6s ease-in-out;
-    /*ease-in-out powoduje, że animacja wykonuje się z łagodnym rozpoczęciem, potem przyspiesza i pod koniec zwalnia z łagodnym zakończeniem*/
+    transition: transform 0.6s ease-in-out;
 }
 
 .panele .paski:hover p {
     transform: scale(1);
-    /*po najechaniu element wyświetlany jest w swojej pierwotnej wielkości*/
 }
 
 .panele .panel .scan {
-    position: relative;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    background: #111;
 }
 
 .panele .panel .scan .odcisk {
     position: relative;
     width: 250px;
     height: 250px;
-    background: url(../img/fp_1.png);
+    background: url(../img/fp_1.png) no-repeat;
     background-size: 250px;
 }
 
-.panele .panel .scan .odcisk:before {
-    /*nałożenie drugiego obrazu na pierwszy*/
+.panele .panel .scan .odcisk::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: url(../img/fp_2.png);
+    background: url(../img/fp_2.png) no-repeat;
     background-size: 250px;
     animation: fprint 4s ease-in-out infinite;
 }
 
 @keyframes fprint {
 
-    /*animacja posiada trzy klatki kluczowe. Jej początek i koniec znajdują się w tym samym punkcie (na górze), a środek animacji to dół bloku. Animacja ta jest działaniem na wysokości drugiego tła zadeklarowanego za pomocą before*/
     0%,
     100% {
         height: 0%;
@@ -673,23 +733,21 @@ input[type="radio"]
     }
 }
 
-.panele .panel .scan .odcisk:after {
-    /*Drugą subklasą wstawiana jest linia symulująca działanie skanera*/
+.panele .panel .scan .odcisk::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 8px;
-    background: #69f;
-    filter: drop-shadow(0 0 20px #69f) drop-shadow(0 0 60px #69f);
-    /*rzucanie cienia wokół elementu. Parametry to przesunięcie w poziomie, pionie, odległość oraz kolor cienia. Podwójne użycie powoduje z różną odległością cienia powoduje, że na pierszych 20px cień ten jest nałożony podwójnie, przez co jest on lepiej widoczny.*/
+    background: var(--niebieski);
+    border-radius: 8px;
+    filter: drop-shadow(0 0 20px var(--niebieski)) drop-shadow(0 0 60px var(--niebieski));
     animation: fprint_linia 4s ease-in-out infinite;
 }
 
 @keyframes fprint_linia {
 
-    /*W tej animacji użyte jest przesunięcie elementu wypozycjonowanego absolutnie od jego bazowego położenia przy górnej krewędzi elementu w dół, aż do dolnej krawędzi elementu.*/
     0%,
     100% {
         top: 0%;
@@ -701,18 +759,17 @@ input[type="radio"]
 }
 
 .panele .panel .scan h3 {
-    color: #69f;
+    color: var(--niebieski);
     font-size: 1.25rem;
     margin-top: 20px;
-    font-family: consolas;
+    font-family: Consolas, monospace;
     text-transform: uppercase;
-    filter: drop-shadow(0 0 20px #69f) drop-shadow(0 0 60px #69f);
+    filter: drop-shadow(0 0 20px var(--niebieski)) drop-shadow(0 0 60px var(--niebieski));
     animation: fprint_tekst 0.5s steps(1) infinite;
 }
 
 @keyframes fprint_tekst {
 
-    /*Miganie tekstu osiągnięte za pomocą widoczności elementu - od całkowitej przezroczystości, do całkowitej widoczności*/
     0%,
     100% {
         opacity: 0;
@@ -725,33 +782,31 @@ input[type="radio"]
 
 .panele .obrotowy {
     position: relative;
+    perspective: 800px;
 }
 
 .panele .obrotowy .face {
-    /*wspólna klasa dla obu elementów*/
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    transition: 0.6s;
+    transition: transform 0.6s ease, background-color 0.6s ease;
 }
 
 .panele .obrotowy .face.face1 {
-    /*klasa dla pierwszego elementu, widocznego na początku*/
-    background: #69f;
+    background: var(--niebieski);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1;
     color: #fff;
     transform-origin: bottom;
-    /*wszelkie transformacje następują względem dolnej krawędzi tego elementu*/
+    text-align: center;
 }
 
 .panele .obrotowy .face.face1 i {
     font-size: 3rem;
-    text-align: center;
     display: block;
 }
 
@@ -763,59 +818,56 @@ input[type="radio"]
 
 .panele .obrotowy:hover .face.face1 {
     transform: translateY(-100%) rotateX(90deg);
-    /*transformacja obejmuje przesunięcie w pionie 0 100% do góry oraz obrócenie elemetu o 90 stopni, przez co staje się on niewidoczny*/
     background: #c00;
 }
 
 .panele .obrotowy .face.face2 {
-    padding: 20px;
+    padding: 30px 25px;
+    display: flex;
+    align-items: center;
     transform-origin: top;
-    /*wszelkie transformacje następują względem górnej krewędzi elementu*/
     transform: translateY(100%) rotateX(90deg);
-    /*element początkowo jest przesunięty w dół o 100% i obrócony o 90 stopni przez co staje się niewidoczny*/
 }
 
 .panele .obrotowy:hover .face.face2 {
     transform: translateY(0) rotateX(0deg);
-    /*aby element się wyświetlił ustawić należy mu warości początkowe, więc nie będzie ani przesunięty, ani obrócony*/
 }
 
 .stopka {
-    background: #222;
+    background: var(--ciemny);
     min-height: 200px;
     display: flex;
-    padding: 10px 25px;
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
     color: #fff;
-    padding: 40px;
+    padding: 50px 40px 20px;
 }
 
 .stopka a {
     color: #fff;
     text-decoration: none;
-    transition: 0.6s;
+    transition: color var(--przejscie);
 }
 
 .stopka a:hover {
-    color: #c00;
+    color: #f33;
 }
 
 .stopka .gorna {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
+    gap: 40px;
     width: 100%;
+    max-width: 1200px;
 }
 
 .stopka .footer {
-    width: 100%;
-    height: 100%;
     flex: 1;
+    min-width: 0;
     display: flex;
     align-items: flex-start;
-    justify-content: center;
     flex-direction: column;
 }
 
@@ -833,16 +885,17 @@ input[type="radio"]
 
 .stopka .footer .linia i {
     font-size: 1.5rem;
-    /*margin-right:15px;*/
-    /
+    width: 1.5rem;
+    text-align: center;
 }
 
 .stopka .footer h3 {
     margin-bottom: 20px;
+    font-weight: 600;
 }
 
 .stopka .footer ul {
-    list-style-type: none;
+    list-style: none;
 }
 
 .stopka .footer ul li {
@@ -852,102 +905,123 @@ input[type="radio"]
 .stopka .footer img {
     width: 100px;
     height: auto;
-    filter: invert(100%);
-    -webkit-filter: invert(100%);
-    text-align: center;
     margin-bottom: 20px;
+    border-radius: 4px;
 }
 
 .stopka .footer .zapis {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    width: 100%;
 }
 
-.stopka .footer .zapis input[type="text"] {
+.stopka .footer .zapis input[type="email"] {
     background: none;
-    height: 40px;
-    padding: 8px;
+    height: 42px;
+    padding: 8px 12px;
     border: 1px solid #fff;
+    border-radius: 4px;
     color: #fff;
+    font-size: 1rem;
+    transition: background-color var(--przejscie), color var(--przejscie);
 }
 
-.stopka .footer .zapis input[type="text"]:focus {
+.stopka .footer .zapis input[type="email"]:focus {
+    outline: none;
     background: #fff;
     color: #000;
 }
 
-.stopka .footer .zapis a {
+.stopka .footer .zapis input.blad,
+.stopka .footer .zapis .linia.blad label {
+    border-color: #f55;
+    color: #f88;
+}
+
+.stopka .footer .zapis input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    accent-color: var(--czerwony);
+}
+
+.stopka .footer .zapis .komunikat.ok {
+    color: #7fe08f;
+}
+
+.stopka .footer .zapis .komunikat.err {
+    color: #f88;
+}
+
+.stopka .footer .zapis button {
+    background: none;
+    color: #fff;
     border: 1px solid #fff;
-    padding: 8px 20px;
+    border-radius: 4px;
+    padding: 10px 20px;
     width: 50%;
-    text-align: center;
     align-self: flex-end;
-    transition: 0.5s;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color var(--przejscie), color var(--przejscie);
 }
 
-.stopka .footer .zapis a:hover {
+.stopka .footer .zapis button:hover {
     background: #fff;
     color: #000;
+}
+
+.stopka .footer .zapis button:disabled {
+    opacity: 0.6;
+    cursor: wait;
 }
 
 .stopka .dolna {
     margin-top: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.6);
-    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 25px 0 70px;
     width: 75%;
     text-align: center;
-    padding-bottom: 30px;
+    font-size: 0.9rem;
+    color: #ccc;
 }
 
-.test {
-    background: #eee;
-    width: 300px;
-    height: 100px;
-    padding: 20px;
-}
-
-.full {
-    min-height: calc(100vh - 100px);
-    /*ustawia wysokość dla diva na wysokość ekranu urządzenia pomniejszoną o wysokość nagłówka*/
-}
 
 .zadzwon {
-    /*styl dla elementu zadzwoń*/
     position: fixed;
-    /*przyklejenie w pewnym miejscu okna przeglądarki względem całego elementu body*/
-    bottom: 40px;
-    /*40 pikseli od dołu*/
-    left: 40px;
-    /*i 40px od lewej*/
-    width: 100px;
-    height: 100px;
+    bottom: 30px;
+    left: 30px;
+    width: 80px;
+    height: 80px;
     background: darkgreen;
     border-radius: 50%;
-    z-index: 9999;
-    /*wyciągamy na górną warstwę*/
+    z-index: 9998;
     display: flex;
     justify-content: center;
     align-items: center;
-    /*flex wyśrodkuje elementy wewnątrz, w tym przypadku ikonkę słuchawki*/
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     animation: pulse 2s infinite;
-    /*dodaje animację pulsowania. animacja obracania elementu pochodzi z font awesome*/
+}
+
+.zadzwon a {
+    color: #fff;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
 }
 
 @keyframes pulse {
     0% {
         transform: scale(0.95);
-        /*pomniejszenie do 95%*/
         box-shadow: 0 0 0 0 rgba(0, 100, 0, 0.7);
-        /*dodanie cienia z kryciem 70%*/
     }
 
     70% {
         transform: scale(1);
-        /*wielkość oryginalna*/
-        box-shadow: 0 0 0 10px rgba(0, 100, 0, 0);
-        /*cień z rozmyciem na 10px i pełną przezroczystością*/
+        box-shadow: 0 0 0 12px rgba(0, 100, 0, 0);
     }
 
     100% {
@@ -956,98 +1030,238 @@ input[type="radio"]
     }
 }
 
-.zadzwon a {
-    color: #fff;
-}
+/ @media (max-width: 1100px) {
 
-.checkbtn {
-    /*styl dla etykiety checkboxa*/
-    font-size: 2rem;
-    margin-right: 20px;
-    margin-left: 10px;
-    cursor: pointer;
-    /*po najechaniu zamienia strzałkę kursora na łapkę*/
-    display: none;
-    /*ukrywamy element*/
-    order: 5;
-    /*przesuwamy element na sam koniec*/
-}
+    .checkbtn {
+        display: block;
+    }
 
-#check {
-    /*styl na pola checkboxa*/
-    display: none;
-}
+    .header .logo1 {
+        flex: 0 0 auto;
+        padding-left: 20px;
+    }
 
-@media(max-width:940px) {
+    .header .socialki {
+        flex: 1;
+        justify-content: flex-end;
+    }
 
-    /*podane wewnątrz media parametry zostaną użyte dla ekranów z rodzielczością do 940px włącznie. tutaj umieszczamy style dla poszczególnych elementów, odnośnie ich wyglądu na urządzeniach mobilnych*/
     .header .menu {
-        /*menu mobilne*/
+        position: fixed;
+        top: var(--wysokosc-menu);
+        left: 0;
         width: 100%;
-        /*pełna szerokość*/
-        position: absolute;
-        /*pozycjonowane względem elementu header*/
-        top: 100px;
-        /*przesunięcie od góry o wysokość nagłówka*/
-        left: -100%;
-        /*przesunięcie w którąś stronę o pełny rozmiar ekranu powoduje zniknięcie menu z okna przeglądarki*/
-        height: calc(100vh - 100px);
-        /*wysokość menu to wysokość okna przeglądarki pomniejszona o wysokość headera*/
-        transition: all 0.5s;
+        height: calc(100vh - var(--wysokosc-menu));
+        height: calc(100dvh - var(--wysokosc-menu));
+        background: rgba(20, 20, 20, 0.97);
+        transform: translateX(-100%);
+        transition: transform 0.4s ease;
+        overflow-y: auto;
     }
 
     .header .menu ul {
         flex-direction: column;
-        /*menu z wyświetlania we wierszu zmieniamy na kolumnę*/
-        background: #222;
+        justify-content: flex-start;
+        padding: 30px 0;
+        height: auto;
     }
 
-    .header .menu ul a {
+    .header .menu ul li {
+        flex: none;
+    }
+
+    .header .menu ul li a {
         color: #fff;
-    }
-
-    .header .socialki {
-        justify-content: flex-end;
-    }
-
-    .checkbtn {
-        display: block;
-        /*powoduje wyświetlenie się ikonki hamburger menu*/
+        font-size: 1.3rem;
+        padding: 18px 0;
     }
 
     #check:checked~.menu {
-        /*jeżeli checkbox czy etykieta przypisana do tego checkboxa zostaną kliknięte (checked), wówczas wszystkie elementy mające klasę .menu znajdujące się w tym samym divie co checkbox zostanę przesunięte do pozycji początkowej*/
-        left: 0;
-        /*czyli przyciągnięte do lewego marginesu okna przeglądarki*/
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 940px) {
+
+    .opis {
+        flex-direction: column;
+        gap: 30px;
+        padding: 50px 20px;
     }
 
-    .opis,
+    .opis .zdjecie,
+    .opis .opis-tekst {
+        flex: none;
+        width: 100%;
+    }
+
+    .opis .zdjecie img {
+        width: 230px;
+        height: 230px;
+    }
+
+    .galeria .siatka {
+        padding: 25px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 200px);
+        grid-template-areas:
+            "img1 img2"
+            "img3 img4"
+            "img5 img6";
+    }
+
     .kontakt {
         flex-direction: column;
     }
 
-    .opis .zdjecie {
-        width: 100%;
-    }
-
-    .kontakt .mapa iframe {
-        min-height: 400px;
-    }
-
-    .panele .wiersz {
-        display: block !important;
-        margin-bottom: 20px;
-    }
-
-    .panele .wiersz .panel {
-        margin-bottom: 20px;
+    .kontakt .formularz {
+        padding: 25px;
     }
 
     .stopka .gorna {
         flex-direction: column;
+        gap: 35px;
     }
 
-    .stopka .footer {
-        margin-bottom: 20px;
+    .stopka .footer .zapis {
+        max-width: 420px;
+    }
+}
+
+@media (max-width: 1024px),
+(hover: none) {
+    .uslugi {
+        background-attachment: scroll;
+    }
+}
+
+@media (max-width: 600px) {
+
+    :root {
+        --wysokosc-menu: 70px;
+    }
+
+    .header .logo1 img {
+        max-width: 90px;
+        max-height: 55px;
+    }
+
+    .header .socialki a {
+        font-size: 1.6rem;
+    }
+
+    .checkbtn {
+        margin: 0 15px 0 5px;
+    }
+
+    .baner,
+    .uslugi {
+        justify-content: center;
+        padding: 30px 0;
+    }
+
+    .baner .kratka,
+    .uslugi .kratka {
+        margin: 0 auto;
+        min-height: 260px;
+    }
+
+    .galeria .siatka {
+        padding: 15px;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 220px);
+        grid-template-areas:
+            "img1"
+            "img2"
+            "img3"
+            "img4"
+            "img5"
+            "img6";
+    }
+
+
+    .galeria .siatka img {
+        filter: none;
+        opacity: 1;
+    }
+
+    .kontakt .mapa {
+        padding: 15px 15px 0;
+    }
+
+    .kontakt .mapa iframe {
+        min-height: 280px;
+    }
+
+    .kontakt .formularz {
+        padding: 20px 15px 30px;
+    }
+
+    .kontakt .formularz form .wiersz {
+        flex-direction: column;
+    }
+
+    .kontakt .formularz form fieldset {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .kontakt .formularz form input[type="submit"] {
+        width: 100%;
+    }
+
+    .panele {
+        padding: 40px 15px;
+    }
+
+    .panele .tytul {
+        font-size: 1.05rem;
+        margin-bottom: 30px;
+    }
+
+    .panele .tytul::before,
+    .panele .tytul::after {
+        display: none;
+    }
+
+    .panele .wiersz {
+        -webkit-box-reflect: unset;
+    }
+
+    .panele .panel {
+        flex: 0 1 320px;
+        width: 100%;
+    }
+
+    .stopka {
+        padding: 35px 20px 20px;
+    }
+
+    .stopka .footer .zapis button {
+        width: 100%;
+    }
+
+    .stopka .dolna {
+        width: 100%;
+        padding-bottom: 80px;
+    }
+
+    .zadzwon {
+        width: 56px;
+        height: 56px;
+        bottom: 18px;
+        left: 18px;
+        font-size: 1.4rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .zadzwon,
+    .zadzwon i {
+        animation: none;
     }
 }

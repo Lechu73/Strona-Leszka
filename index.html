@@ -3,192 +3,218 @@
 
 <head>
     <meta charset="UTF-8">
+    <!-- viewport = podstawa responsywności: bez tego telefon "udaje" ekran 980px -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strona Leszka></title>
-    <meta name="description" content="Opis zawartości dokumentu (max 160 zzs)">
-    <link rel="stylesheet" href="css/style.css">
+    <!-- POPRAWKA: usunięty zbędny znak ">" z tytułu -->
+    <title>Strona Leszka – usługi informatyczne, monitoring, elektryka | Piekary Śląskie</title>
+    <!-- POPRAWKA: prawdziwy opis strony dla Google (do 160 znaków) -->
+    <meta name="description"
+        content="Leszek – usługi informatyczne, programistyczne, monitoring i prace elektryczne dla firm i osób prywatnych. Piekary Śląskie i okolice.">
+    <link rel="icon" href="img/logo1.jpg">
+    <!-- Czcionka Poppins ładowana przez <link> (szybciej niż @import w CSS) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <div class="header">
+    <header class="header">
         <div class="logo1">
-            <a href="index.html"><img src="img/logo1.jpg" alt="Piekary Śląskie" /></a>
+            <a href="index.html" data-testid="header-logo-link"><img src="img/logo1.jpg" alt="Strona Leszka – logo" /></a>
         </div>
-        <input type="checkbox" id="check">
-        <label for="check" class="checkbtn">
+
+        <!-- Ukryty checkbox steruje menu mobilnym (☰) -->
+        <input type="checkbox" id="check" aria-hidden="true">
+        <label for="check" class="checkbtn" aria-label="Otwórz menu" data-testid="mobile-menu-toggle">
             <i class="fas fa-bars"></i>
         </label>
-        <div class="menu">
+
+        <nav class="menu" data-testid="main-nav">
+            <!-- POPRAWKA: w <ul> mogą być tylko <li>, więc <a> jest teraz WEWNĄTRZ <li> -->
             <ul>
-                <a href="#">
-                    <li>Start</li>
-                </a>
-                <a href="#omnie">
-                    <li>O mnie</li>
-                </a>
-                <a href="#galeria">
-                    <li>Galeria</li>
-                </a>
-                <a href="#usługi">
-                    <li>Usługi</li>
-                </a>
-                <a href="#kontakt">
-                    <li>Kontakt</li>
-                </a>
-                <a href="#panele">
-                    <li>Panele</li>
-                </a>
+                <li><a href="#" data-testid="nav-start">Start</a></li>
+                <li><a href="#omnie" data-testid="nav-omnie">O mnie</a></li>
+                <li><a href="#galeria" data-testid="nav-galeria">Galeria</a></li>
+                <!-- POPRAWKA: kotwica bez polskich znaków (#uslugi) -->
+                <li><a href="#uslugi" data-testid="nav-uslugi">Usługi</a></li>
+                <li><a href="#kontakt" data-testid="nav-kontakt">Kontakt</a></li>
+                <li><a href="#panele" data-testid="nav-panele">Panele</a></li>
             </ul>
-        </div>
+        </nav>
+
         <div class="socialki">
-            <a href="https://www.facebook.com/profile.php?id=100073156853158" target="_blank"><i
-                    class="fa-brands fa-square-facebook"></i></a>
-            <a href="https://youtube.com" target="_blank"><i class="fa-brands fa-square-youtube"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=100073156853158" target="_blank" rel="noopener"
+                aria-label="Facebook" data-testid="social-facebook"><i class="fa-brands fa-square-facebook"></i></a>
+            <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"
+                data-testid="social-youtube"><i class="fa-brands fa-square-youtube"></i></a>
         </div>
-    </div>
-    <div class="baner full">
-        <div class="kratka">
-            <h1>STRONA POKAZOWA</h1>
-            <p>Strona Leszka pokazująca próbkę jak może wyglądać twoja stona</p>
-            <a href="https://piekary.pl/">Zobacz więcej</a>
-        </div>
-    </div>
-    <div class="opis full" id="omnie">
+    </header>
 
-        <div class="zdjecie">
-            <img src="img/1Leszek.jpg" alt="Leszek">
-        </div>
-
-        <div class="opis-tekst">
-            <div class="tekst p1">Usługi</div>
-            <div class="tekst p2">Informatyczne</div>
-            <div class="tekst p3">Monitoring</div>
-            <div class="tekst p4">Elektryczne</div>
-        </div>
-
-    </div>
-
-    <div class="galeria full" id="galeria">
-        <div class="siatka">
-            <div class="item img1"><img src="img/bg1.jpg" alt=""></div>
-            <div class="item img2"><img src="img/bg2.jpg" alt=""></div>
-            <div class="item img3"><img src="img/bg3.jpg" alt=""></div>
-            <div class="item img4"><img src="img/bg4.jpg" alt=""></div>
-            <div class="item img5"><img src="img/bg5.jpg" alt=""></div>
-            <div class="item img6"><img src="img/bg6.jpg" alt=""></div>
-        </div>
-    </div>
-
-    <div class="usługi full" id="usługi">
-        <div class="kratka">
-            <h1>OFERTA</h1>Kierowana jest dla firm jak i osób prywatnych.
-            <p>Oferuje usługi informatycze, programistyczne i elektryczne. </p>
-            <a href="#" id="openModal">Moja oferta</a>
-        </div>
-    </div>
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Potrzebna pomoc</h2>
-            <p>Potrzebujesz pomocy dorze trafiłeś zadzwoń napisz a znajdziemy rozwiązanie</p>
-        </div>
-    </div>
-    <div class="kontakt full" id="kontakt">
-        <div class="mapa">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d48415.47003508895!2d18.95195149952186!3d50.375416633790515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spl!2spl!4v1746529947351!5m2!1spl!2spl"></iframe>
-        </div>
-        <div class="formularz">
-            <h3>Formularz</h3>
-            <form>
-                <div class="wiersz">
-                    <input type="text" id="imie" name="imie" required placeholder="Podaj imię">
-                    <input type="text" id="nazwisko" name="nazwisko" required placeholder="Podaj nazwisko">
-                </div>
-                <div class="wiersz">
-                    <input type="tel" id="telefon" name="telefon" required
-                        placeholder="Numer telefonu (format 555555555)" pattern="[0-9]{9}">
-                    <input type="text" id="email" name="email" required placeholder="Podaj email">
-                </div>
-                <input type="text" id="temat" name="temat" required placeholder="Podaj temat wiadomości">
-                <fieldset>
-                    <legend>Czy jesteś naszym klientem?</legend>
-                    <div class="opcja">
-                        <input type="radio" id="tak" name="wybor">
-                        <label for="tak">Tak</label>
-                    </div>
-                    <div class="opcja">
-                        <input type="radio" id="nie" name="wybor">
-                        <label for="nie">Nie</label>
-                    </div>
-                    <div class="opcja">
-                        <input type="radio" id="nie_wiem" name="wybor">
-                        <label for="nie_wiem">Nie wiem</label>
-                    </div>
-                </fieldset>
-                <textarea id="wiadomosc" placeholder="Wpisz treść wiadomości" required></textarea>
-                <input type="submit" value="Wyślij wiadomość">
-            </form>
-
-
-        </div>
-    </div>
-    <div class="panele full" id="panele">
-        <div class="tytul">To są tylko przykłady &nbsp;<span>które mogą być także na twojej stronie </span></div>
-        <div class="wiersz">
-            <div class="panel paski">
-                <img src="img/img1.webp" alt="man">
-                <p>komputery</p>
+    <main>
+        <section class="baner full">
+            <div class="kratka">
+                <h1 data-testid="hero-title">STRONA POKAZOWA</h1>
+                <p>Strona Leszka pokazująca próbkę, jak może wyglądać Twoja strona</p>
+                <a href="https://piekary.pl/" target="_blank" rel="noopener" data-testid="hero-more-link">Zobacz więcej</a>
             </div>
-            <div class="panel paski">
-                <img src="img/img2.jpg" alt="woman">
-                <p>telefony</p>
+        </section>
+
+        <section class="opis full" id="omnie">
+            <div class="zdjecie">
+                <img src="img/1Leszek.jpg" alt="Leszek" data-testid="about-photo">
             </div>
-            <div class="panel">
-                <div class="scan">
-                    <div class="odcisk"></div>
-                    <h3>Skanowanie...</h3>
-                </div>
+            <div class="opis-tekst" data-testid="about-text">
+                <div class="tekst p1">Usługi</div>
+                <div class="tekst p2">Informatyczne</div>
+                <div class="tekst p3">Monitoring</div>
+                <div class="tekst p4">Elektryczne</div>
             </div>
-            <div class="panel obrotowy">
-                <div class="face face1">
-                    <div class="content">
-                        <i class="fa-solid fa-pen-nib"></i>
-                        <h3>Design</h3>
-                    </div>
-                </div>
-                <div class="face face2">
-                    <div class="content">
-                        <p>Polecam własne usługi w zakresie szeroko pojętej informatyki i programowania oraz prace
-                            elektryczne.</p>
-                    </div>
-                </div>
+        </section>
+
+        <section class="galeria full" id="galeria">
+            <div class="siatka" data-testid="gallery-grid">
+                <div class="item img1"><img src="img/bg1.jpg" alt="Galeria – zdjęcie 1" loading="lazy"></div>
+                <div class="item img2"><img src="img/bg2.jpg" alt="Galeria – zdjęcie 2" loading="lazy"></div>
+                <div class="item img3"><img src="img/bg3.jpg" alt="Galeria – zdjęcie 3" loading="lazy"></div>
+                <div class="item img4"><img src="img/bg4.jpg" alt="Galeria – zdjęcie 4" loading="lazy"></div>
+                <div class="item img5"><img src="img/bg5.jpg" alt="Galeria – zdjęcie 5" loading="lazy"></div>
+                <div class="item img6"><img src="img/bg6.jpg" alt="Galeria – zdjęcie 6" loading="lazy"></div>
+            </div>
+        </section>
+
+        <!-- POPRAWKA: klasa i id bez polskich znaków -->
+        <section class="uslugi full" id="uslugi">
+            <div class="kratka">
+                <h1>OFERTA</h1>
+                <!-- POPRAWKA: tekst był "luzem" obok nagłówka – teraz w akapicie -->
+                <p>Kierowana jest do firm, jak i osób prywatnych.</p>
+                <p>Oferuję usługi informatyczne, programistyczne i elektryczne.</p>
+                <a href="#" id="openModal" data-testid="open-offer-modal">Moja oferta</a>
+            </div>
+        </section>
+
+        <!-- Okno "Moja oferta" (wcześniej brakowało stylów i skryptu) -->
+        <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"
+            data-testid="offer-modal">
+            <div class="modal-content">
+                <button type="button" class="close" aria-label="Zamknij" data-testid="offer-modal-close">&times;</button>
+                <h2 id="modal-title">Potrzebna pomoc?</h2>
+                <p>Potrzebujesz pomocy? Dobrze trafiłeś! Zadzwoń lub napisz, a znajdziemy rozwiązanie.</p>
+                <a href="#kontakt" class="modal-btn" data-testid="offer-modal-contact">Napisz do mnie</a>
             </div>
         </div>
-    </div>
-    <div class="stopka">
+
+        <section class="kontakt full" id="kontakt">
+            <div class="mapa">
+                <!-- POPRAWKA: dodany tytuł (dostępność) i leniwe ładowanie mapy -->
+                <iframe title="Mapa – Piekary Śląskie" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d48415.47003508895!2d18.95195149952186!3d50.375416633790515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spl!2spl!4v1746529947351!5m2!1spl!2spl"></iframe>
+            </div>
+            <div class="formularz">
+                <h3>Formularz kontaktowy</h3>
+                <form id="contactForm" novalidate data-testid="contact-form">
+                    <div class="wiersz">
+                        <input type="text" id="imie" name="imie" required placeholder="Podaj imię" autocomplete="given-name"
+                            data-testid="contact-imie">
+                        <input type="text" id="nazwisko" name="nazwisko" required placeholder="Podaj nazwisko"
+                            autocomplete="family-name" data-testid="contact-nazwisko">
+                    </div>
+                    <div class="wiersz">
+                        <input type="tel" id="telefon" name="telefon" required
+                            placeholder="Numer telefonu (format 555555555)" pattern="[0-9]{9}" inputmode="numeric"
+                            autocomplete="tel" data-testid="contact-telefon">
+                        <!-- POPRAWKA: type="email" – przeglądarka sama sprawdzi adres, telefon pokaże klawiaturę z @ -->
+                        <input type="email" id="email" name="email" required placeholder="Podaj email"
+                            autocomplete="email" data-testid="contact-email">
+                    </div>
+                    <input type="text" id="temat" name="temat" required placeholder="Podaj temat wiadomości"
+                        data-testid="contact-temat">
+                    <fieldset>
+                        <legend>Czy jesteś naszym klientem?</legend>
+                        <!-- POPRAWKA: przyciski radio mają wartości (value), inaczej nie wiadomo, co wybrano -->
+                        <div class="opcja">
+                            <input type="radio" id="tak" name="wybor" value="tak" data-testid="contact-klient-tak">
+                            <label for="tak">Tak</label>
+                        </div>
+                        <div class="opcja">
+                            <input type="radio" id="nie" name="wybor" value="nie" data-testid="contact-klient-nie">
+                            <label for="nie">Nie</label>
+                        </div>
+                        <div class="opcja">
+                            <input type="radio" id="nie_wiem" name="wybor" value="nie wiem" checked
+                                data-testid="contact-klient-nie-wiem">
+                            <label for="nie_wiem">Nie wiem</label>
+                        </div>
+                    </fieldset>
+                    <!-- POPRAWKA: textarea ma name, inaczej treść nie zostałaby wysłana -->
+                    <textarea id="wiadomosc" name="wiadomosc" placeholder="Wpisz treść wiadomości" required
+                        data-testid="contact-wiadomosc"></textarea>
+                    <p class="komunikat" id="contactMsg" role="status" aria-live="polite" data-testid="contact-status"></p>
+                    <input type="submit" value="Wyślij wiadomość" data-testid="contact-submit">
+                </form>
+            </div>
+        </section>
+
+        <section class="panele full" id="panele">
+            <div class="tytul">To są tylko przykłady&nbsp;<span>które mogą być także na Twojej stronie</span></div>
+            <div class="wiersz" data-testid="panels-row">
+                <div class="panel paski">
+                    <img src="img/img1.webp" alt="Komputery" loading="lazy">
+                    <p>komputery</p>
+                </div>
+                <div class="panel paski">
+                    <img src="img/img2.jpg" alt="Telefony" loading="lazy">
+                    <p>telefony</p>
+                </div>
+                <div class="panel">
+                    <div class="scan">
+                        <div class="odcisk"></div>
+                        <h3>Skanowanie...</h3>
+                    </div>
+                </div>
+                <div class="panel obrotowy">
+                    <div class="face face1">
+                        <div class="content">
+                            <i class="fa-solid fa-pen-nib"></i>
+                            <h3>Design</h3>
+                        </div>
+                    </div>
+                    <div class="face face2">
+                        <div class="content">
+                            <p>Polecam własne usługi w zakresie szeroko pojętej informatyki i programowania oraz prace
+                                elektryczne.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="stopka">
         <div class="gorna">
             <div class="footer">
                 <img src="img/logo1.jpg" alt="Logo firmy">
                 <div class="adres">
                     <div class="linia">
                         <i class="fa-regular fa-envelope"></i>
-                        <p>xxxxxxxxxxxxxx,<br>
-                            41-945 Piekary Śląskie</p>
+                        <p>xxxxxxxxxxxxxx,<br>41-945 Piekary Śląskie</p>
                     </div>
                     <div class="linia">
                         <i class="fa-solid fa-phone"></i>
-                        <p><a href="tel:48668103897">+48 668 103 897</a></p>
+                        <!-- POPRAWKA: numer z "+" – poprawny format międzynarodowy -->
+                        <p><a href="tel:+48668103897" data-testid="footer-phone">+48 668 103 897</a></p>
                     </div>
                     <div class="linia">
                         <i class="fa-solid fa-at"></i>
-                        <p><a
-                                href="mailto:mail@poczta.com?cc=mail1@poczta.com&bcc=mail2@poczta.com&subject=Tytuł wiadomości&body=Wiadomość ze strony www">lczesnoic@gmail.com</a>
-                        </p>
+                        <!-- POPRAWKA: link mailto prowadzi na ten sam adres, który jest wyświetlany -->
+                        <p><a href="mailto:lczesnoic@gmail.com?subject=Wiadomo%C5%9B%C4%87%20ze%20strony%20www"
+                                data-testid="footer-email">lczesnoic@gmail.com</a></p>
                     </div>
                 </div>
             </div>
@@ -204,28 +230,33 @@
             </div>
             <div class="footer">
                 <h3>Newsletter</h3>
-                <div class="zapis">
+                <!-- POPRAWKA: newsletter jest teraz formularzem, który naprawdę zapisuje adres -->
+                <form class="zapis" id="newsletterForm" novalidate data-testid="newsletter-form">
                     <p>Zapisz się do naszego newslettera, aby być na bieżąco</p>
-                    <input type="text" id="newsletter" name="newsletter" placeholder="Wpisz adres email">
+                    <input type="email" id="newsletter" name="newsletter" placeholder="Wpisz adres email" required
+                        autocomplete="email" data-testid="newsletter-email">
                     <div class="linia">
-                        <input type="checkbox" id="zgoda" name="zgoda">
-                        <label for="zgoda">Wyrażam zgodę na...</label>
+                        <input type="checkbox" id="zgoda" name="zgoda" required data-testid="newsletter-zgoda">
+                        <label for="zgoda">Wyrażam zgodę na otrzymywanie newslettera</label>
                     </div>
-                    <a href="#">Zapisz się</a>
-                </div>
-
+                    <p class="komunikat" id="newsletterMsg" role="status" aria-live="polite"
+                        data-testid="newsletter-status"></p>
+                    <button type="submit" data-testid="newsletter-submit">Zapisz się</button>
+                </form>
             </div>
         </div>
         <div class="dolna">
             <p>Copyright 2026 lczesnoic@gmail.com</p>
         </div>
-    </div>
+    </footer>
+
     <div class="zadzwon">
-        <a href="tel:+48668103897">
+        <a href="tel:+48668103897" aria-label="Zadzwoń" data-testid="call-button">
             <i class="fa-solid fa-shake fa-phone-volume"></i>
         </a>
     </div>
 
+    <script src="js/script.js" defer></script>
 </body>
 
 </html>

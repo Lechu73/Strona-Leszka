@@ -3,15 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- viewport = podstawa responsywności: bez tego telefon "udaje" ekran 980px -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- POPRAWKA: usunięty zbędny znak ">" z tytułu -->
     <title>Strona Leszka – usługi informatyczne, monitoring, elektryka | Piekary Śląskie</title>
-    <!-- POPRAWKA: prawdziwy opis strony dla Google (do 160 znaków) -->
     <meta name="description"
         content="Leszek – usługi informatyczne, programistyczne, monitoring i prace elektryczne dla firm i osób prywatnych. Piekary Śląskie i okolice.">
     <link rel="icon" href="img/logo1.jpg">
-    <!-- Czcionka Poppins ładowana przez <link> (szybciej niż @import w CSS) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet"
@@ -28,20 +24,16 @@
         <div class="logo1">
             <a href="index.html" data-testid="header-logo-link"><img src="img/logo1.jpg" alt="Strona Leszka – logo" /></a>
         </div>
-
-        <!-- Ukryty checkbox steruje menu mobilnym (☰) -->
         <input type="checkbox" id="check" aria-hidden="true">
         <label for="check" class="checkbtn" aria-label="Otwórz menu" data-testid="mobile-menu-toggle">
             <i class="fas fa-bars"></i>
         </label>
 
         <nav class="menu" data-testid="main-nav">
-            <!-- POPRAWKA: w <ul> mogą być tylko <li>, więc <a> jest teraz WEWNĄTRZ <li> -->
             <ul>
                 <li><a href="#" data-testid="nav-start">Start</a></li>
                 <li><a href="#omnie" data-testid="nav-omnie">O mnie</a></li>
                 <li><a href="#galeria" data-testid="nav-galeria">Galeria</a></li>
-                <!-- POPRAWKA: kotwica bez polskich znaków (#uslugi) -->
                 <li><a href="#uslugi" data-testid="nav-uslugi">Usługi</a></li>
                 <li><a href="#kontakt" data-testid="nav-kontakt">Kontakt</a></li>
                 <li><a href="#panele" data-testid="nav-panele">Panele</a></li>
@@ -88,18 +80,15 @@
             </div>
         </section>
 
-        <!-- POPRAWKA: klasa i id bez polskich znaków -->
         <section class="uslugi full" id="uslugi">
             <div class="kratka">
                 <h1>OFERTA</h1>
-                <!-- POPRAWKA: tekst był "luzem" obok nagłówka – teraz w akapicie -->
                 <p>Kierowana jest do firm, jak i osób prywatnych.</p>
                 <p>Oferuję usługi informatyczne, programistyczne i elektryczne.</p>
                 <a href="#" id="openModal" data-testid="open-offer-modal">Moja oferta</a>
             </div>
         </section>
 
-        <!-- Okno "Moja oferta" (wcześniej brakowało stylów i skryptu) -->
         <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"
             data-testid="offer-modal">
             <div class="modal-content">
@@ -112,7 +101,6 @@
 
         <section class="kontakt full" id="kontakt">
             <div class="mapa">
-                <!-- POPRAWKA: dodany tytuł (dostępność) i leniwe ładowanie mapy -->
                 <iframe title="Mapa – Piekary Śląskie" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
                     src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d48415.47003508895!2d18.95195149952186!3d50.375416633790515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spl!2spl!4v1746529947351!5m2!1spl!2spl"></iframe>
             </div>
@@ -129,7 +117,6 @@
                         <input type="tel" id="telefon" name="telefon" required
                             placeholder="Numer telefonu (format 555555555)" pattern="[0-9]{9}" inputmode="numeric"
                             autocomplete="tel" data-testid="contact-telefon">
-                        <!-- POPRAWKA: type="email" – przeglądarka sama sprawdzi adres, telefon pokaże klawiaturę z @ -->
                         <input type="email" id="email" name="email" required placeholder="Podaj email"
                             autocomplete="email" data-testid="contact-email">
                     </div>
@@ -137,7 +124,6 @@
                         data-testid="contact-temat">
                     <fieldset>
                         <legend>Czy jesteś naszym klientem?</legend>
-                        <!-- POPRAWKA: przyciski radio mają wartości (value), inaczej nie wiadomo, co wybrano -->
                         <div class="opcja">
                             <input type="radio" id="tak" name="wybor" value="tak" data-testid="contact-klient-tak">
                             <label for="tak">Tak</label>
@@ -152,7 +138,6 @@
                             <label for="nie_wiem">Nie wiem</label>
                         </div>
                     </fieldset>
-                    <!-- POPRAWKA: textarea ma name, inaczej treść nie zostałaby wysłana -->
                     <textarea id="wiadomosc" name="wiadomosc" placeholder="Wpisz treść wiadomości" required
                         data-testid="contact-wiadomosc"></textarea>
                     <p class="komunikat" id="contactMsg" role="status" aria-live="polite" data-testid="contact-status"></p>
@@ -207,12 +192,10 @@
                     </div>
                     <div class="linia">
                         <i class="fa-solid fa-phone"></i>
-                        <!-- POPRAWKA: numer z "+" – poprawny format międzynarodowy -->
                         <p><a href="tel:+48668103897" data-testid="footer-phone">+48 668 103 897</a></p>
                     </div>
                     <div class="linia">
                         <i class="fa-solid fa-at"></i>
-                        <!-- POPRAWKA: link mailto prowadzi na ten sam adres, który jest wyświetlany -->
                         <p><a href="mailto:lczesnoic@gmail.com?subject=Wiadomo%C5%9B%C4%87%20ze%20strony%20www"
                                 data-testid="footer-email">lczesnoic@gmail.com</a></p>
                     </div>
@@ -230,7 +213,6 @@
             </div>
             <div class="footer">
                 <h3>Newsletter</h3>
-                <!-- POPRAWKA: newsletter jest teraz formularzem, który naprawdę zapisuje adres -->
                 <form class="zapis" id="newsletterForm" novalidate data-testid="newsletter-form">
                     <p>Zapisz się do naszego newslettera, aby być na bieżąco</p>
                     <input type="email" id="newsletter" name="newsletter" placeholder="Wpisz adres email" required

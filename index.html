@@ -42,9 +42,9 @@
 
         <div class="socialki">
             <a href="https://www.facebook.com/profile.php?id=100073156853158" target="_blank" rel="noopener"
-                aria-label="Facebook" data-testid="social-facebook"><i class="fa-brands fa-square-facebook"></i></a>
+               aria-label="Facebook" data-testid="social-facebook"><i class="fa-brands fa-square-facebook"></i></a>
             <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"
-                data-testid="social-youtube"><i class="fa-brands fa-square-youtube"></i></a>
+               data-testid="social-youtube"><i class="fa-brands fa-square-youtube"></i></a>
         </div>
     </header>
 
@@ -90,7 +90,7 @@
         </section>
 
         <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"
-            data-testid="offer-modal">
+             data-testid="offer-modal">
             <div class="modal-content">
                 <button type="button" class="close" aria-label="Zamknij" data-testid="offer-modal-close">&times;</button>
                 <h2 id="modal-title">Potrzebna pomoc?</h2>
@@ -102,26 +102,26 @@
         <section class="kontakt full" id="kontakt">
             <div class="mapa">
                 <iframe title="Mapa – Piekary Śląskie" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d48415.47003508895!2d18.95195149952186!3d50.375416633790515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spl!2spl!4v1746529947351!5m2!1spl!2spl"></iframe>
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d48415.47003508895!2d18.95195149952186!3d50.375416633790515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spl!2spl!4v1746529947351!5m2!1spl!2spl"></iframe>
             </div>
             <div class="formularz">
                 <h3>Formularz kontaktowy</h3>
                 <form id="contactForm" novalidate data-testid="contact-form">
                     <div class="wiersz">
                         <input type="text" id="imie" name="imie" required placeholder="Podaj imię" autocomplete="given-name"
-                            data-testid="contact-imie">
+                               data-testid="contact-imie">
                         <input type="text" id="nazwisko" name="nazwisko" required placeholder="Podaj nazwisko"
-                            autocomplete="family-name" data-testid="contact-nazwisko">
+                               autocomplete="family-name" data-testid="contact-nazwisko">
                     </div>
                     <div class="wiersz">
                         <input type="tel" id="telefon" name="telefon" required
-                            placeholder="Numer telefonu (format 555555555)" pattern="[0-9]{9}" inputmode="numeric"
-                            autocomplete="tel" data-testid="contact-telefon">
+                               placeholder="Numer telefonu (format 555555555)" pattern="[0-9]{9}" inputmode="numeric"
+                               autocomplete="tel" data-testid="contact-telefon">
                         <input type="email" id="email" name="email" required placeholder="Podaj email"
-                            autocomplete="email" data-testid="contact-email">
+                               autocomplete="email" data-testid="contact-email">
                     </div>
                     <input type="text" id="temat" name="temat" required placeholder="Podaj temat wiadomości"
-                        data-testid="contact-temat">
+                           data-testid="contact-temat">
                     <fieldset>
                         <legend>Czy jesteś naszym klientem?</legend>
                         <div class="opcja">
@@ -134,12 +134,12 @@
                         </div>
                         <div class="opcja">
                             <input type="radio" id="nie_wiem" name="wybor" value="nie wiem" checked
-                                data-testid="contact-klient-nie-wiem">
+                                   data-testid="contact-klient-nie-wiem">
                             <label for="nie_wiem">Nie wiem</label>
                         </div>
                     </fieldset>
                     <textarea id="wiadomosc" name="wiadomosc" placeholder="Wpisz treść wiadomości" required
-                        data-testid="contact-wiadomosc"></textarea>
+                              data-testid="contact-wiadomosc"></textarea>
                     <p class="komunikat" id="contactMsg" role="status" aria-live="polite" data-testid="contact-status"></p>
                     <input type="submit" value="Wyślij wiadomość" data-testid="contact-submit">
                 </form>
@@ -172,8 +172,10 @@
                     </div>
                     <div class="face face2">
                         <div class="content">
-                            <p>Polecam własne usługi w zakresie szeroko pojętej informatyki i programowania oraz prace
-                                elektryczne.</p>
+                            <p>
+                                Polecam własne usługi w zakresie szeroko pojętej informatyki i programowania oraz prace
+                                elektryczne.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -196,8 +198,10 @@
                     </div>
                     <div class="linia">
                         <i class="fa-solid fa-at"></i>
-                        <p><a href="mailto:lczesnoic@gmail.com?subject=Wiadomo%C5%9B%C4%87%20ze%20strony%20www"
-                                data-testid="footer-email">lczesnoic@gmail.com</a></p>
+                        <p>
+                            <a href="mailto:lczesnoic@gmail.com?subject=Wiadomo%C5%9B%C4%87%20ze%20strony%20www"
+                               data-testid="footer-email">lczesnoic@gmail.com</a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -216,13 +220,13 @@
                 <form class="zapis" id="newsletterForm" novalidate data-testid="newsletter-form">
                     <p>Zapisz się do naszego newslettera, aby być na bieżąco</p>
                     <input type="email" id="newsletter" name="newsletter" placeholder="Wpisz adres email" required
-                        autocomplete="email" data-testid="newsletter-email">
+                           autocomplete="email" data-testid="newsletter-email">
                     <div class="linia">
                         <input type="checkbox" id="zgoda" name="zgoda" required data-testid="newsletter-zgoda">
                         <label for="zgoda">Wyrażam zgodę na otrzymywanie newslettera</label>
                     </div>
                     <p class="komunikat" id="newsletterMsg" role="status" aria-live="polite"
-                        data-testid="newsletter-status"></p>
+                       data-testid="newsletter-status"></p>
                     <button type="submit" data-testid="newsletter-submit">Zapisz się</button>
                 </form>
             </div>
@@ -238,7 +242,7 @@
         </a>
     </div>
 
-    <script src="js/script.js" defer></script>
+    <script src="script.js" defer></script>
 </body>
 
 </html>

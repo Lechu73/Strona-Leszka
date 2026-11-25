@@ -1,41 +1,45 @@
-
 document.addEventListener("DOMContentLoaded", function () {
-
+    // Menu mobilne – zamknij menu po wybraniu pozycji.
     const check = document.querySelector("#check");
     const menu = document.querySelector(".menu");
 
     if (check && menu) {
-        const linkiMenu = menu.querySelectorAll("a");
-
-        linkiMenu.forEach(function (link) {
+        menu.querySelectorAll("a").forEach(function (link) {
             link.addEventListener("click", function () {
                 check.checked = false;
             });
         });
     }
 
+    // Okno modalne oferty.
     const modal = document.querySelector("#modal");
     const openModal = document.querySelector("#openModal");
     const closeModal = modal ? modal.querySelector(".close") : null;
+    const modalContactLink = modal ? modal.querySelector('a[href="#kontakt"]') : null;
 
     function otworzModal() {
-        if (modal) {
-            modal.style.display = "block";
-        }
+        if (!modal) return;
+        modal.classList.add("open");
     }
 
     function zamknijModal() {
-        if (modal) {
-            modal.style.display = "none";
-        }
+        if (!modal) return;
+        modal.classList.remove("open");
     }
 
     if (openModal) {
-        openModal.addEventListener("click", otworzModal);
+        openModal.addEventListener("click", function (event) {
+            event.preventDefault();
+            otworzModal();
+        });
     }
 
     if (closeModal) {
         closeModal.addEventListener("click", zamknijModal);
+    }
+
+    if (modalContactLink) {
+        modalContactLink.addEventListener("click", zamknijModal);
     }
 
     if (modal) {
@@ -52,15 +56,17 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // Komunikaty formularzy. Klasy ok/err są zgodne z arkuszem CSS.
     function pokaz(element, tekst, poprawnie) {
         if (!element) return;
 
         element.textContent = tekst;
         element.style.display = "block";
-        element.classList.remove("blad", "sukces");
-        element.classList.add(poprawnie ? "sukces" : "blad");
+        element.classList.remove("ok", "err");
+        element.classList.add(poprawnie ? "ok" : "err");
     }
 
+    // Formularz kontaktowy – wersja demonstracyjna, bez wysyłania wiadomości.
     const contactForm = document.querySelector("#contactForm");
     const contactMsg = document.querySelector("#contactMsg");
 
@@ -73,26 +79,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            const telefon = document.querySelector("#telefon");
+            const telefon = contactForm.querySelector("#telefon");
 
             if (telefon) {
                 const numer = telefon.value.replace(/\D/g, "");
 
                 if (numer.length !== 9) {
-                    telefon.setCustomValidity(
-                        "Numer telefonu musi zawierać 9 cyfr."
-                    );
+                    telefon.setCustomValidity("Numer telefonu musi zawierać 9 cyfr.");
                     telefon.reportValidity();
                     telefon.setCustomValidity("");
                     return;
                 }
-            }
-
-            const zgoda = document.querySelector("#zgoda");
-
-            if (zgoda && !zgoda.checked) {
-                zgoda.reportValidity();
-                return;
             }
 
             pokaz(
@@ -105,6 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Newsletter – również wersja demonstracyjna, bez zapisywania adresu.
     const newsletterForm = document.querySelector("#newsletterForm");
     const newsletterMsg = document.querySelector("#newsletterMsg");
 
@@ -117,11 +115,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            const emailNewsletter =
-                newsletterForm.querySelector("#newsletter");
-
-            if (!emailNewsletter) return;
-
             pokaz(
                 newsletterMsg,
                 "Dziękuję! Adres został poprawnie wpisany. To jest wersja demonstracyjna – zapis nie został wysłany.",
@@ -131,5 +124,4 @@ document.addEventListener("DOMContentLoaded", function () {
             newsletterForm.reset();
         });
     }
-
 });
